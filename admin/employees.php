@@ -1,3 +1,5 @@
+<?php include("../model/conn.php"); ?>
+<?php include("../model/conn.php"); ?>
 <!DOCTYPE html>
 
 <!-- =========================================================

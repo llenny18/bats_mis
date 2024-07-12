@@ -1,6 +1,6 @@
 <?php
 
-include("../model/conn.php");
+
 function displayEmployees($conn){
     $sql = "SELECT employee_id, user_name, first_name, last_name, employment_type, date_of_birth, email, phone_number FROM employeedetails";
     $result = $conn->query($sql);

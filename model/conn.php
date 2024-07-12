@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Step 1: Connect to the MySQL database
 $servername = "localhost";
 $username = "root";
@@ -14,4 +15,6 @@ if ($conn->connect_error) {
 }
 
 
+
+include("../controller/display.php");
 ?>
