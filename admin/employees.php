@@ -41,7 +41,9 @@
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
 
@@ -78,15 +80,15 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> List</h4>
 
               
 
               <!-- Bootstrap Table with Header - Footer -->
               <div class="card">
-                <h5 class="card-header">Table Header & Footer</h5>
+                <h5 class="card-header">Employee List and Information</h5>
                 <div class="table-responsive text-nowrap">
-                  <table class="table">
+                  <table class="table" id="zero_config">
                     <thead>
                       <tr>
                         <th>Project</th>
@@ -341,7 +343,15 @@
     <!-- / Layout wrapper -->
 
   
-
+    <script src="../assets/multicheck/datatable-checkbox-init.js"></script>
+    <script src="../assets/multicheck/jquery.multicheck.js"></script>
+    <script src="../assets/DataTables/datatables.min.js"></script>
+    <script>
+        /****************************************
+         *       Basic Table                   *
+         ****************************************/
+        $('#zero_config').DataTable();
+    </script>
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
