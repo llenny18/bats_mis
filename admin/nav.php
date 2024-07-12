@@ -42,7 +42,7 @@
 
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="layouts-without-menu.php" class="menu-link">
+                  <a href="employees.php" class="menu-link">
                     <div data-i18n="Without menu">List of Employees</div>
                   </a>
                 </li>
