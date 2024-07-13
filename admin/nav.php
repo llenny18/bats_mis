@@ -66,7 +66,7 @@ if ($resultuserdata->num_rows > 0) {
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-without-navbar.php" class="menu-link">
+                  <a href="daily-logs.php" class="menu-link">
                     <div data-i18n="Without navbar">Daily Time Record</div>
                   </a>
                 </li>

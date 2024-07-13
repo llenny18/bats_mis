@@ -76,7 +76,7 @@
 
               <!-- Bootstrap Table with Header - Footer -->
               <?php
-              displayEmployees($conn);
+              displayDailyLogs($conn);
               ?>
               <!-- Bootstrap Table with Header - Footer -->
 

@@ -76,7 +76,24 @@
 
               <!-- Bootstrap Table with Header - Footer -->
               <?php
-              displayEmployees($conn);
+              displayUserEmployees($conn);
+              ?>
+              <!-- Bootstrap Table with Header - Footer -->
+
+              <hr class="my-5" />
+
+              <!--/ Responsive Table -->
+            </div>
+
+            
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User Admins /</span> List</h4>
+
+              
+
+              <!-- Bootstrap Table with Header - Footer -->
+              <?php
+              displayUsers($conn);
               ?>
               <!-- Bootstrap Table with Header - Footer -->
 
@@ -111,6 +128,7 @@
          *       Basic Table                   *
          ****************************************/
         $('#zero_config').DataTable();
+        $('#zero_config1').DataTable();
     </script>
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
