@@ -11,14 +11,12 @@ function displayEmployees($conn){
             <table class="table" id="zero_config">
                 <thead>
                     <tr>
-                        <th>Employee ID</th>
-                        <th>User Name</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Full Name</th>
                         <th>Employment Type</th>
                         <th>Date of Birth</th>
                         <th>Email</th>
                         <th>Phone Number</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,14 +25,28 @@ function displayEmployees($conn){
                         // Output data of each row
                         while($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td>" . $row["employee_id"] . "</td>";
-                            echo "<td>" . $row["user_name"] . "</td>";
-                            echo "<td>" . $row["first_name"] . "</td>";
-                            echo "<td>" . $row["last_name"] . "</td>";
+                            echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>";
                             echo "<td>" . $row["employment_type"] . "</td>";
                             echo "<td>" . $row["date_of_birth"] . "</td>";
                             echo "<td>" . $row["email"] . "</td>";
                             echo "<td>" . $row["phone_number"] . "</td>";
+                            echo "<td>";
+                            ?>
+                            <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
+                              >
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                ><i class="bx bx-trash me-2"></i> Delete</a
+                              >
+                            </div>
+                          </div>
+                          <?php
+                            echo "</td>";
                             echo "</tr>";
                         }
                     } else {
@@ -44,15 +56,13 @@ function displayEmployees($conn){
                 </tbody>
                 <tfoot class="table-border-bottom-0">
                     <tr>
-                        <th>Employee ID</th>
-                        <th>User Name</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Full Name</th>
                         <th>Employment Type</th>
                         <th>Date of Birth</th>
                         <th>Email</th>
                         <th>Phone Number</th>
-                    </tr>
+                        <th>Action</th>
+                        </tr>
                 </tfoot>
             </table>
         </div>
