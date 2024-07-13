@@ -76,33 +76,24 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.php" class="menu-link">
+                  <a href="employees-present.php" class="menu-link">
                     <div data-i18n="Account">List of Present</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-notifications.php" class="menu-link">
+                  <a href="employees-absent.php" class="menu-link">
                     <div data-i18n="Notifications">List of Absent</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.php" class="menu-link">
+                  <a href="employees-leave.php" class="menu-link">
                     <div data-i18n="Connections">List of On-Leave</div>
                   </a>
                 </li>
+                
                 <li class="menu-item">
                   <a href="pages-account-settings-connections.php" class="menu-link">
-                    <div data-i18n="Connections">Travel Order Form</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-account-settings-connections.php" class="menu-link">
-                    <div data-i18n="Connections">Leave Form</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-account-settings-connections.php" class="menu-link">
-                    <div data-i18n="Connections">User Log</div>
+                    <div data-i18n="Connections">User Management</div>
                   </a>
                 </li>
               </ul>
