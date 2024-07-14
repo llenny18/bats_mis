@@ -111,19 +111,20 @@
                       <form id="formAccountSettings" method="POST" onsubmit="return false">
                         <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">First Name</label>
+                            <label for="firstName" class="form-label">Admin ID</label>
                             <input
                               class="form-control"
                               type="text"
                               id="firstName"
                               name="firstName"
-                              value="John"
+                              value="<?= $userData['user_id']  ?>"
+                              readonly
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
+                            <label for="lastName" class="form-label">Full Name</label>
+                            <input class="form-control" type="text" name="lastName" id="lastName" value="<?= $userData['name']  ?>" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -132,126 +133,55 @@
                               type="text"
                               id="email"
                               name="email"
-                              value="john.doe@example.com"
+                              value="<?= $userData['email']  ?>"
                               placeholder="john.doe@example.com"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Organization</label>
+                            <label for="organization" class="form-label">Role</label>
                             <input
                               type="text"
                               class="form-control"
                               id="organization"
                               name="organization"
-                              value="ThemeSelection"
+                              value="<?= $userData['role']  ?>"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="phoneNumber">Phone Number</label>
                             <div class="input-group input-group-merge">
-                              <span class="input-group-text">US (+1)</span>
+                              <span class="input-group-text">PH (+639)</span>
                               <input
                                 type="text"
                                 id="phoneNumber"
                                 name="phoneNumber"
                                 class="form-control"
-                                placeholder="202 555 0111"
+                                placeholder="0934234422"
+                                value="<?= $userData['contact_number']  ?>"
                               />
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
+                            <input type="text" class="form-control" id="address"  value="<?= $userData['address']  ?>" name="address" placeholder="Address" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="state" class="form-label">State</label>
-                            <input class="form-control" type="text" id="state" name="state" placeholder="California" />
+                            <label for="state" class="form-label">Username</label>
+                            <input class="form-control" type="text" value="<?= $userData['username']  ?>" id="state" name="state" placeholder="California" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="zipCode" class="form-label">Zip Code</label>
+                            <label for="zipCode" class="form-label">Passsword</label>
                             <input
                               type="text"
                               class="form-control"
                               id="zipCode"
                               name="zipCode"
                               placeholder="231465"
+                              value="<?= $userData['password']  ?>"
                               maxlength="6"
                             />
                           </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" for="country">Country</label>
-                            <select id="country" class="select2 form-select">
-                              <option value="">Select</option>
-                              <option value="Australia">Australia</option>
-                              <option value="Bangladesh">Bangladesh</option>
-                              <option value="Belarus">Belarus</option>
-                              <option value="Brazil">Brazil</option>
-                              <option value="Canada">Canada</option>
-                              <option value="China">China</option>
-                              <option value="France">France</option>
-                              <option value="Germany">Germany</option>
-                              <option value="India">India</option>
-                              <option value="Indonesia">Indonesia</option>
-                              <option value="Israel">Israel</option>
-                              <option value="Italy">Italy</option>
-                              <option value="Japan">Japan</option>
-                              <option value="Korea">Korea, Republic of</option>
-                              <option value="Mexico">Mexico</option>
-                              <option value="Philippines">Philippines</option>
-                              <option value="Russia">Russian Federation</option>
-                              <option value="South Africa">South Africa</option>
-                              <option value="Thailand">Thailand</option>
-                              <option value="Turkey">Turkey</option>
-                              <option value="Ukraine">Ukraine</option>
-                              <option value="United Arab Emirates">United Arab Emirates</option>
-                              <option value="United Kingdom">United Kingdom</option>
-                              <option value="United States">United States</option>
-                            </select>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="language" class="form-label">Language</label>
-                            <select id="language" class="select2 form-select">
-                              <option value="">Select Language</option>
-                              <option value="en">English</option>
-                              <option value="fr">French</option>
-                              <option value="de">German</option>
-                              <option value="pt">Portuguese</option>
-                            </select>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="timeZones" class="form-label">Timezone</label>
-                            <select id="timeZones" class="select2 form-select">
-                              <option value="">Select Timezone</option>
-                              <option value="-12">(GMT-12:00) International Date Line West</option>
-                              <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
-                              <option value="-10">(GMT-10:00) Hawaii</option>
-                              <option value="-9">(GMT-09:00) Alaska</option>
-                              <option value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
-                              <option value="-8">(GMT-08:00) Tijuana, Baja California</option>
-                              <option value="-7">(GMT-07:00) Arizona</option>
-                              <option value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-                              <option value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
-                              <option value="-6">(GMT-06:00) Central America</option>
-                              <option value="-6">(GMT-06:00) Central Time (US & Canada)</option>
-                              <option value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
-                              <option value="-6">(GMT-06:00) Saskatchewan</option>
-                              <option value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-                              <option value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
-                              <option value="-5">(GMT-05:00) Indiana (East)</option>
-                              <option value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
-                              <option value="-4">(GMT-04:00) Caracas, La Paz</option>
-                            </select>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="currency" class="form-label">Currency</label>
-                            <select id="currency" class="select2 form-select">
-                              <option value="">Select Currency</option>
-                              <option value="usd">USD</option>
-                              <option value="euro">Euro</option>
-                              <option value="pound">Pound</option>
-                              <option value="bitcoin">Bitcoin</option>
-                            </select>
-                          </div>
+                   
                         </div>
                         <div class="mt-2">
                           <button type="submit" class="btn btn-primary me-2">Save changes</button>
@@ -262,11 +192,11 @@
                     <!-- /Account -->
                   </div>
                   <div class="card">
-                    <h5 class="card-header">Delete Account</h5>
+                    <h5 class="card-header">Deactivate Account</h5>
                     <div class="card-body">
                       <div class="mb-3 col-12 mb-0">
                         <div class="alert alert-warning">
-                          <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
+                          <h6 class="alert-heading fw-bold mb-1">Are you sure you want to deactivate your account?</h6>
                           <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
                         </div>
                       </div>
