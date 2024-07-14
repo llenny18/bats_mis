@@ -189,8 +189,8 @@ function displayUsers($conn)
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-2"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> Delete</a>
+                                    <a class="dropdown-item" href="manage-admin.php?user_id=<?= $row["user_id"] ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
+                                    <a class="dropdown-item" href="../controller/manage.php?user_id=<?= $row["user_id"] ?>&purpose=delete_user"><i class="bx bx-trash me-2"></i> Delete</a>
                                 </div>
                             </div>
                     <?php
