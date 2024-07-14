@@ -3,62 +3,6 @@
 
 
 
-<?php
-if (isset($_GET['user_id'])) {
-
-
-  $sqlusermanage = "SELECT * FROM users where user_id = '{$_GET['user_id']}'";
-  $resultuserinfo = $conn->query($sqlusermanage);
-
-  if ($resultuserinfo->num_rows > 0) {
-    // output data of each row
-    $userDataInfo = $resultuserinfo->fetch_assoc();
-  }
-}
-
-
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  // Retrieve updated values from the form
-  $user_id = $_POST['user_id'];
-  $name = $_POST['name'];
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-  $email = $_POST['email'];
-  $role = $_POST['role'];
-  $contact_number = $_POST['contact_number'];
-  $address = $_POST['address'];
-
-  // Update query
-  $sqlupdate = "UPDATE users SET 
-      name='$name',
-      username='$username',
-      password='$password',
-      email='$email',
-      role='$role',
-      contact_number='$contact_number',
-      address='$address'
-      WHERE user_id='$user_id'";
-
-  if ($conn->query($sqlupdate) === TRUE) {
-?>
-<script>alert('Edit Information Succesful!');window.location.href='edit-admin.php?user_id=<?= $_GET['user_id'] ?>'</script>
-    
-
-  <?php
-  } else {
-  ?>
-
-    <script>alert('Edit Information Error: <?= $_GET['user_id'] ?>');window.location.href='edit-admin.php?user_id=<?= $_GET['user_id'] ?>'</script>
-
-<?php
-  }
-}
-
-
-
-?>
-
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <head>
@@ -99,6 +43,113 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
   <!-- Layout wrapper -->
+
+
+  <?php
+  if (isset($_GET['user_id'])) {
+
+
+    $sqlusermanage = "SELECT * FROM users where user_id = '{$_GET['user_id']}'";
+    $resultuserinfo = $conn->query($sqlusermanage);
+
+    if ($resultuserinfo->num_rows > 0) {
+      // output data of each row
+      $userDataInfo = $resultuserinfo->fetch_assoc();
+    }
+
+
+    if (isset($_POST['Update'])) {
+      // Retrieve updated values from the form
+      $user_id = $_POST['user_id'];
+      $name = $_POST['name'];
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $email = $_POST['email'];
+      $role = $_POST['role'];
+      $contact_number = $_POST['contact_number'];
+      $address = $_POST['address'];
+
+      // Update query
+      $sqlupdate = "UPDATE users SET 
+        name='$name',
+        username='$username',
+        password='$password',
+        email='$email',
+        role='$role',
+        contact_number='$contact_number',
+        address='$address'
+        WHERE user_id='$user_id'";
+
+      if ($conn->query($sqlupdate) === TRUE) {
+  ?>
+        <script>
+          alert('Edit Information Succesful!');
+          window.location.href = 'manage-admin.php?user_id=<?= $_GET['user_id'] ?>'
+        </script>
+
+
+      <?php
+      } else {
+      ?>
+
+        <script>
+          alert('Edit Information Error: <?= $_GET['user_id'] ?>');
+          window.location.href = 'manage-admin.php?user_id=<?= $_GET['user_id'] ?>'
+        </script>
+
+      <?php
+      }
+    }
+  } else {
+
+    if (isset($_POST['Register'])) {
+      // Retrieve values from the form
+      $user_id = $_POST['user_id'];
+      $name = $_POST['name'];
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $email = $_POST['email'];
+      $role = $_POST['role'];
+      $contact_number = $_POST['contact_number'];
+      $address = $_POST['address'];
+
+      // Insert query
+      $sqlinsert = "INSERT INTO users (user_id, name, username, password, email, role, contact_number, address) VALUES (
+        '$user_id',
+        '$name',
+        '$username',
+        '$password',
+        '$email',
+        '$role',
+        '$contact_number',
+        '$address')";
+
+      if ($conn->query($sqlinsert) === TRUE) {
+      ?>
+        <script>
+          alert('Insert Information Successful!');
+          window.location.href = window.location.href
+        </script>
+
+      <?php
+      } else {
+      ?>
+
+        <script>
+          alert('Insert Information Error ');
+          window.location.href = 'manage-admin.php?user_id=<?= $_GET['user_id'] ?>'
+        </script>
+
+  <?php
+      }
+    }
+  }
+
+
+
+
+
+  ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <!-- Menu -->
@@ -112,8 +163,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Edit Information/</span> Administrator</h4>
-         
+          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><?php if (isset($_GET['user_id'])) {
+                                                                            echo "Edit";
+                                                                          } else {
+                                                                            echo "Register";
+                                                                          }; ?> Information/</span> Administrator</h4>
+
           <!-- Basic Layout & Basic with Icons -->
           <div class="row">
             <!-- Basic Layout -->
@@ -127,56 +182,76 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-name">User ID</label>
                       <div class="col-sm-10">
-                        <input type="text" name="user_id" class="form-control" value="<?= $userDataInfo['user_id'] ?>" id="basic-default-name" placeholder="User ID" />
+                        <input type="text" name="user_id" class="form-control" value="<?= $userDataInfo['user_id'] ?? rand(99999, 999999) ?>" id="basic-default-name" placeholder="User ID" readonly />
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label"  for="basic-default-company">Full Name</label>
+                      <label class="col-sm-2 col-form-label" for="basic-default-company">Full Name</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name" id="basic-default-company" placeholder="Full Name" value="<?= $userDataInfo['name'] ?>" />
+                        <input type="text" required class="form-control" name="name" id="basic-default-company" placeholder="Full Name" value="<?= $userDataInfo['name'] ?? '' ?>" />
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-email">Username</label>
                       <div class="col-sm-10">
                         <div class="input-group input-group-merge">
-                          <input type="text" id="basic-default-email" class="form-control" placeholder="john.doe" name="username" aria-label="john.doe" aria-describedby="basic-default-email2" value="<?= $userDataInfo['username'] ?>" />
+                          <input type="text" required id="basic-default-email" class="form-control" placeholder="john.doe" name="username" aria-label="john.doe" aria-describedby="basic-default-email2" value="<?= $userDataInfo['username'] ?? '' ?>" />
                         </div>
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-phone">Password</label>
                       <div class="col-sm-10">
-                        <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="password" name="password" aria-describedby="basic-default-phone" value="<?= $userDataInfo['password'] ?>" />
+                        <input type="text" id="basic-default-phone" class="form-control phone-mask" placeholder="password" name="password" required aria-describedby="basic-default-phone" value="<?= $userDataInfo['password'] ?? '' ?>" />
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-message">Email</label>
                       <div class="col-sm-10">
-                        <input id="basic-default-message" class="form-control" placeholder="" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="email" value="<?= $userDataInfo['email'] ?>" />
+                        <input id="basic-default-message" class="form-control" placeholder="Email@email.com" aria-label="Hi, Do you have a moment to talk Joe?" required aria-describedby="basic-icon-default-message2" name="email" value="<?= $userDataInfo['email'] ?? '' ?>" />
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-message">Role</label>
                       <div class="col-sm-10">
-                        <input id="basic-default-message" class="form-control" placeholder="" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="role" value="<?= $userDataInfo['role'] ?>" />
+                        <select name="role" id="role" class="form-control">
+                          <option <?php if (($userDataInfo['role'] ?? '') == 'Admin') {
+                                    echo " selected ";
+                                  } ?> value="Admin">Admin</option>
+                          <option <?php if (($userDataInfo['role'] ?? '') == 'Admin') {
+                                    echo " selected ";
+                                  } ?> value="Sub-Admin">Sub-Admin</option>
+                          <option <?php if (($userDataInfo['role'] ?? '') == 'Admin') {
+                                    echo " selected ";
+                                  } ?> value="Head">Head</option>
+
+                        </select>
+
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-message">Contact Number</label>
                       <div class="col-sm-10">
-                        <input id="basic-default-message" class="form-control" placeholder="" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="contact_number" value="<?= $userDataInfo['contact_number'] ?>" />
+                        <input id="basic-default-message" class="form-control" placeholder="0927621231" aria-label="Hi, Do you have a moment to talk Joe?" required aria-describedby="basic-icon-default-message2" name="contact_number" value="<?= $userDataInfo['contact_number'] ?? '' ?>" />
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-message">Address</label>
                       <div class="col-sm-10">
-                        <input id="basic-default-message" class="form-control" placeholder="" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="address" value="<?= $userDataInfo['address'] ?>" />
+                        <input id="basic-default-message" class="form-control" placeholder="User Address" aria-label="Hi, Do you have a moment to talk Joe?" required aria-describedby="basic-icon-default-message2" name="address" value="<?= $userDataInfo['address'] ?? '' ?>" />
                       </div>
                     </div>
                     <div class="row justify-content-end">
                       <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" name="<?php if (isset($_GET['user_id'])) {
+                                                      echo "Update";
+                                                    } else {
+                                                      echo "Register";
+                                                    }; ?>" class="btn btn-primary"><?php if (isset($_GET['user_id'])) {
+                                                                                                                                                                echo "Update";
+                                                                                                                                                              } else {
+                                                                                                                                                                echo "Register";
+                                                                                                                                                              }; ?></button>
                       </div>
                     </div>
                   </form>
