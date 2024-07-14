@@ -21,7 +21,7 @@ if ($resultuserdata->num_rows > 0) {
             <a href="index.php" class="app-brand-link">
               <span class="app-brand-logo demo">
                 
-                <img src="../assets/img/logo.jpg" style="height: 100px;" alt="">
+                <img src="../assets/img/logo.png" style="height: 100px;" alt="">
               </span>
               
             </a>

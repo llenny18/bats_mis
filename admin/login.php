@@ -13,7 +13,7 @@
   <meta name="description" content="" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="../assets/img/logo.jpg" />
+  <link rel="icon" type="image/x-icon" href="../assets/img/logo.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,7 +53,7 @@
             <!-- Logo -->
             <div class="app-brand justify-content-center">
               <a href="index.php" class="app-brand-link gap-2">
-                <img src="../assets/img/logo.jpg" style="height: 100px;" alt="">
+                <img src="../assets/img/logo.png" style="height: 100px;" alt="">
               </a>
             </div>
             <!-- /Logo -->
