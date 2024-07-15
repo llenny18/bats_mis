@@ -223,6 +223,24 @@ function displayUsers($conn)
 
 
 
+function viewLeaveStatus($conn, $eid)
+{
+    $sql = "SELECT * FROM `leavemanagement` WHERE leave_id = {$eid}";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if ($row['status'] == "pending") {
+            echo "<td>" .'<span class="badge bg-label-warning me-1">Pending</span>'. "</td>";
+        } else if ($row['status'] == "approved") {
+            echo "<td>" .'<span class="badge bg-label-success me-1">Approved</span>'. "</td>";
+        } else if ($row['status'] == "declined") {
+            echo "<td>" .'<span class="badge bg-label-danger me-1">Declined</span>'. "</td>";
+        }
+    } else {
+        echo "<td>" .'<span class="badge bg-label-danger me-1">Absent</span>'. "</td>";
+    }
+}
+
 
 function viewEmployeeStatus($conn, $eid)
 {
@@ -497,6 +515,133 @@ function displayEmployeesAbsent($conn)
 
 }
 
+
+
+
+function displayLeaveManagement($conn)
+{
+    $sql = "SELECT leave_id, user_id, user_type, more_info, leave_type, start_date, end_date, status, created_at FROM leavemanagement";
+    $result = $conn->query($sql);
+?>
+    <div class="card">
+        <h5 class="card-header">Leave Management Information</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table" id="zero_config">
+                <thead>
+                    <tr>
+                        <th>Leave ID</th>
+                        <th>User ID</th>
+                        <th>User Type</th>
+                        <th>More Info</th>
+                        <th>Leave Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["leave_id"] . "</td>";
+                            echo "<td>" . $row["user_id"] . "</td>";
+                            echo "<td>" . $row["user_type"] . "</td>";
+                            echo "<td>" . $row["more_info"] . "</td>";
+                            echo "<td>" . $row["leave_type"] . "</td>";
+                            echo "<td>" . $row["start_date"] . "</td>";
+                            echo "<td>" . $row["end_date"] . "</td>";
+                            viewLeaveStatus($conn, $row["leave_id"]);
+                            echo "<td>" . $row["created_at"] . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='9'>No results found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+                <tfoot class="table-border-bottom-0">
+                    <tr>
+                        <th>Leave ID</th>
+                        <th>User ID</th>
+                        <th>User Type</th>
+                        <th>More Info</th>
+                        <th>Leave Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+<?php
+}
+
+
+
+
+
+
+function displayEmployeeFiles($conn)
+{
+    $sql = "SELECT employee_id, user_name, first_name, last_name, employment_type, date_of_birth, email, phone_number FROM employeedetails";
+    $result = $conn->query($sql);
+?>
+    <div class="card">
+        <h5 class="card-header">Employee List and Information</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table" id="zero_config">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Employment Type</th>
+                        <th>Action</th>
+                      
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["employee_id"] . "</td>";
+                            echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>";
+                            echo "<td>" . $row["employment_type"] . "</td>";
+                            echo "<td><a class='btn btn-success' href='view-efiles.php?user_id= " . $row["employment_type"] . "' >View Files</a></td>";
+                           
+
+                           
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='8'>No results found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+                <tfoot class="table-border-bottom-0">
+                    <tr>
+                    <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Employment Type</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+
+<?php
+
+}
 
 
 ?>

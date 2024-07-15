@@ -71,17 +71,13 @@ if ($resultuserdata->num_rows > 0) {
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-container.php" class="menu-link">
+                  <a href="leaves.php" class="menu-link">
                     <div data-i18n="Container">Leave Credits </div>
                   </a>
                 </li>
+                
                 <li class="menu-item">
-                  <a href="layouts-container.php" class="menu-link">
-                    <div data-i18n="Container">Confirmation </div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-container.php" class="menu-link">
+                  <a href="files.php" class="menu-link">
                     <div data-i18n="Container">Files </div>
                   </a>
                 </li>
