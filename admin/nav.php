@@ -42,7 +42,7 @@ if ($resultuserdata->num_rows > 0) {
               </a>
             </li>
             <li class="menu-item">
-              <a href="cards-basic.php" class="menu-link">
+              <a href="calendar.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar"></i>
                 <div data-i18n="Basic">Calendar</div>
               </a>

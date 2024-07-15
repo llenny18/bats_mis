@@ -17,7 +17,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Fluid - Layouts | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>BATS MIS | Calendar</title>
 
     <meta name="description" content="" />
 
@@ -50,6 +50,10 @@
 
   
     <script src="../assets/js/config.js"></script>
+
+
+    <link rel="stylesheet" href="../calendar/dist/calendar.js.css">
+        <script src="../calendar/dist/calendar.js"></script>
   </head>
 
   <body>
@@ -69,55 +73,33 @@
             <div class="container-fluid flex-grow-1 container-p-y">
               <!-- Layout Demo -->
               <div class="layout-demo-wrapper">
-                <div class="layout-demo-placeholder">
-                  <img
-                    src="../assets/img/layouts/layout-fluid-light.png"
-                    class="img-fluid"
-                    alt="Layout fluid"
-                    data-app-light-img="layouts/layout-fluid-light.png"
-                    data-app-dark-img="layouts/layout-fluid-dark.png"
-                  />
+                <div id="myCalendar" style="max-width: 1500px; ">
+                <p>Some data that should be cleared.</p>
+            </div>
+            <br>
+    
+     
+            <h2>Import Events:</h2>
+            <button onclick="importEvents();" class="btn btn-primary m-1">Import</button>
+
+            <h2>Export Events:</h2>
+            <button onclick="calendarInstance.export( 'csv' );" class="btn btn-primary m-1">Export (csv)</button>
+            <button onclick="calendarInstance.export( 'xml' );" class="btn btn-primary m-1">Export (xml)</button>
+            <button onclick="calendarInstance.export( 'json' );" class="btn btn-primary m-1">Export (json)</button>
+            <button onclick="calendarInstance.export( 'text' );" class="btn btn-primary m-1">Export (text)</button>
+            <button onclick="calendarInstance.export( 'ical' );" class="btn btn-primary m-1">Export (ical)</button>
+            <button onclick="calendarInstance.export( 'md' );" class="btn btn-primary m-1">Export (md)</button>
+            <button onclick="calendarInstance.export( 'html' );" class="btn btn-primary m-1">Export (html)</button>
+            <button onclick="calendarInstance.export( 'tsv' );" class="btn btn-primary m-1">Export (tsv)</button>
                 </div>
-                <div class="layout-demo-info">
-                  <h4>Layout fluid</h4>
-                  <p>Fluid layout sets a <code>100% width</code> at each responsive breakpoint.</p>
-                </div>
+                
               </div>
               <!--/ Layout Demo -->
             </div>
             <!-- / Content -->
 
             <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-              <div class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                <div class="mb-2 mb-md-0">
-                  ©
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                </div>
-                <div>
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                  <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Documentation</a
-                  >
-
-                  <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Support</a
-                  >
-                </div>
-              </div>
-            </footer>
+            <?php   include("./footer.php");  ?>
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -133,7 +115,62 @@
     <!-- / Layout wrapper -->
 
    
+    <script>
+        var calendarInstance = new calendarJs( "myCalendar", { 
+            exportEventsEnabled: true, 
+            manualEditingEnabled: true, 
+            views: {
+                fullMonth: {
+                    showTimesInEvents: false,
+                    minimumDayHeight: 0
+                }
+            },
+            manualEditingEnabled: true,
+            organizerName: "Your Name",
+            organizerEmailAddress: "your@email.address",
+            visibleDays: [ 0, 1, 2, 3, 4, 5, 6 ],
+            events: {
+                onEventsExported: function( events ) {
+                    console.log( events );
+                }
+            }
+        } );
 
+
+        var event1 = {
+                from: new Date("2024-07-11"),
+                to: new Date("2024-07-12"),
+                title: "New Event 1",
+                description: "A description of the new event"
+            },
+            event2 = {
+                from: new Date(),
+                to: new Date(),
+                title: "New Event 2",
+                description: "A description of the new event"
+            };
+
+            calendarInstance.addEvent( event1 );
+
+        document.title += " v" + calendarInstance.getVersion();
+        document.getElementById( "header" ).innerText += " - v" + calendarInstance.getVersion();
+
+        function importEvents() {
+            var input = document.createElement( "input" );
+            input.type = "file";
+            input.accept = ".ical, .ics, .json";
+            input.multiple = "multiple";
+
+            input.onchange = function() {
+                calendarInstance.import( input.files );
+            };
+
+            input.click();
+        }
+
+
+       
+    </script>
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
