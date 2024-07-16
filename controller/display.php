@@ -31,8 +31,8 @@ function displayDailyLogs($conn)
                             echo "<tr>";
                             echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>";
                             echo "<td>" . $row["employment_type"] . "</td>";
-                            echo "<td>" . date("g:i a", strtotime($row["time_in"])) . " - ".date("g:i a", strtotime($row["time_out"])).  "</td>";
-                            echo "<td>" . date("F j, Y",strtotime($row["date"] )) . "</td>";
+                            echo "<td>" . date("g:i a", strtotime($row["time_in"])) . " - " . date("g:i a", strtotime($row["time_out"])) .  "</td>";
+                            echo "<td>" . date("F j, Y", strtotime($row["date"])) . "</td>";
 
                             echo "<td>";
                     ?>
@@ -56,7 +56,7 @@ function displayDailyLogs($conn)
                 </tbody>
                 <tfoot class="table-border-bottom-0">
                     <tr>
-                    <th>Full Name</th>
+                        <th>Full Name</th>
                         <th>Employment Type</th>
                         <th>Time In and Time Out</th>
                         <th>Date</th>
@@ -107,7 +107,7 @@ function displayUserEmployees($conn)
                             echo "<td>" . $row["date_of_birth"] . "</td>";
                             echo "<td>" . $row["email"] . "</td>";
                             echo "<td>" . $row["phone_number"] . "</td>";
-                             viewEmployeeStatus($conn, $row["employee_id"]) ;
+                            viewEmployeeStatus($conn, $row["employee_id"]);
 
                             echo "<td>";
                     ?>
@@ -116,7 +116,7 @@ function displayUserEmployees($conn)
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="manage-employee.php?employee_id=<?=  $row["employee_id"] ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
+                                    <a class="dropdown-item" href="manage-employee.php?employee_id=<?= $row["employee_id"] ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
                                     <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> Delete</a>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@ function displayUsers($conn)
                 </tbody>
                 <tfoot class="table-border-bottom-0">
                     <tr>
-                    <th>Full Name</th>
+                        <th>Full Name</th>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Phone Number</th>
@@ -230,14 +230,14 @@ function viewLeaveStatus($conn, $eid)
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if ($row['status'] == "pending") {
-            echo "<td>" .'<span class="badge bg-label-warning me-1">Pending</span>'. "</td>";
+            echo "<td>" . '<span class="badge bg-label-warning me-1">Pending</span>' . "</td>";
         } else if ($row['status'] == "approved") {
-            echo "<td>" .'<span class="badge bg-label-success me-1">Approved</span>'. "</td>";
+            echo "<td>" . '<span class="badge bg-label-success me-1">Approved</span>' . "</td>";
         } else if ($row['status'] == "declined") {
-            echo "<td>" .'<span class="badge bg-label-danger me-1">Declined</span>'. "</td>";
+            echo "<td>" . '<span class="badge bg-label-danger me-1">Declined</span>' . "</td>";
         }
     } else {
-        echo "<td>" .'<span class="badge bg-label-danger me-1">Absent</span>'. "</td>";
+        echo "<td>" . '<span class="badge bg-label-danger me-1">Absent</span>' . "</td>";
     }
 }
 
@@ -249,14 +249,14 @@ function viewEmployeeStatus($conn, $eid)
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if ($row['status'] == "present") {
-            echo "<td>" .'<span class="badge bg-label-success me-1">Present</span>'. "</td>";
+            echo "<td>" . '<span class="badge bg-label-success me-1">Present</span>' . "</td>";
         } else if ($row['status'] == "absent") {
-            echo "<td>" .'<span class="badge bg-label-danger me-1">Absent</span>'. "</td>";
+            echo "<td>" . '<span class="badge bg-label-danger me-1">Absent</span>' . "</td>";
         } else if ($row['status'] == "on_leave") {
-            echo "<td>" .'<span class="badge bg-label-warning me-1">On Leave</span>'. "</td>";
+            echo "<td>" . '<span class="badge bg-label-warning me-1">On Leave</span>' . "</td>";
         }
     } else {
-        echo "<td>" .'<span class="badge bg-label-danger me-1">Absent</span>'. "</td>";
+        echo "<td>" . '<span class="badge bg-label-danger me-1">Absent</span>' . "</td>";
     }
 }
 
@@ -280,7 +280,7 @@ function displayEmployees($conn)
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -294,9 +294,9 @@ function displayEmployees($conn)
                             echo "<td>" . $row["date_of_birth"] . "</td>";
                             echo "<td>" . $row["email"] . "</td>";
                             echo "<td>" . $row["phone_number"] . "</td>";
-                             viewEmployeeStatus($conn, $row["employee_id"]) ;
+                            viewEmployeeStatus($conn, $row["employee_id"]);
 
-                           
+
                             echo "</tr>";
                         }
                     } else {
@@ -312,7 +312,7 @@ function displayEmployees($conn)
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </tfoot>
             </table>
@@ -344,7 +344,7 @@ function displayEmployeesOnLeave($conn)
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -358,9 +358,9 @@ function displayEmployeesOnLeave($conn)
                             echo "<td>" . $row["date_of_birth"] . "</td>";
                             echo "<td>" . $row["email"] . "</td>";
                             echo "<td>" . $row["phone_number"] . "</td>";
-                             viewEmployeeStatus($conn, $row["employee_id"]) ;
+                            viewEmployeeStatus($conn, $row["employee_id"]);
 
-                           
+
                             echo "</tr>";
                         }
                     } else {
@@ -376,7 +376,7 @@ function displayEmployeesOnLeave($conn)
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </tfoot>
             </table>
@@ -406,7 +406,7 @@ function displayEmployeesPresent($conn)
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -420,9 +420,9 @@ function displayEmployeesPresent($conn)
                             echo "<td>" . $row["date_of_birth"] . "</td>";
                             echo "<td>" . $row["email"] . "</td>";
                             echo "<td>" . $row["phone_number"] . "</td>";
-                             viewEmployeeStatus($conn, $row["employee_id"]) ;
+                            viewEmployeeStatus($conn, $row["employee_id"]);
 
-                           
+
                             echo "</tr>";
                         }
                     } else {
@@ -438,7 +438,7 @@ function displayEmployeesPresent($conn)
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </tfoot>
             </table>
@@ -470,7 +470,7 @@ function displayEmployeesAbsent($conn)
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -484,9 +484,9 @@ function displayEmployeesAbsent($conn)
                             echo "<td>" . $row["date_of_birth"] . "</td>";
                             echo "<td>" . $row["email"] . "</td>";
                             echo "<td>" . $row["phone_number"] . "</td>";
-                             viewEmployeeStatus($conn, $row["employee_id"]) ;
+                            viewEmployeeStatus($conn, $row["employee_id"]);
 
-                           
+
                             echo "</tr>";
                         }
                     } else {
@@ -502,7 +502,7 @@ function displayEmployeesAbsent($conn)
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </tfoot>
             </table>
@@ -601,8 +601,8 @@ function displayEmployeeFiles($conn)
                         <th>Full Name</th>
                         <th>Employment Type</th>
                         <th>Action</th>
-                      
-                        
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -614,10 +614,10 @@ function displayEmployeeFiles($conn)
                             echo "<td>" . $row["employee_id"] . "</td>";
                             echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>";
                             echo "<td>" . $row["employment_type"] . "</td>";
-                            echo "<td><a class='btn btn-success' href='view-efiles.php?user_id= " . $row["employment_type"] . "' >View Files</a></td>";
-                           
+                            echo "<td><a class='btn btn-success' href='view-efiles.php?user_id= " . $row["employee_id"] . "' >View Files</a></td>";
 
-                           
+
+
                             echo "</tr>";
                         }
                     } else {
@@ -627,10 +627,162 @@ function displayEmployeeFiles($conn)
                 </tbody>
                 <tfoot class="table-border-bottom-0">
                     <tr>
-                    <th>ID</th>
+                        <th>ID</th>
                         <th>Full Name</th>
                         <th>Employment Type</th>
                         <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+
+
+<?php
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function displayEmployeeFileSeparated($conn, $eid)
+{
+    $sql = "SELECT employee_id, user_name, first_name, last_name, employment_type, date_of_birth, email, phone_number FROM employeedetails Where employee_id = $eid";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+?>
+    <div class="card">Files of <?= $row['employee_id'] . ": " . $row["first_name"] . " " . $row["last_name"] ?></h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table" id="zero_config">
+                <thead>
+                    <tr>
+                        <th>File Type</th>
+                        <th>File</th>
+                        <th>File Description</th>
+                        <th>Action</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+
+                    $sql1ch = "SELECT * FROM `files` WHERE user_id = $eid and user_type='employee'";
+                    $result1ch = $conn->query($sql1ch);
+
+                    if ($result1ch->num_rows > 0) {
+                        // Output data of each row
+                        $sql1 = "SELECT * FROM `files` WHERE user_id = $eid and user_type='employee' and file_type='pds'";
+                        $result1 = $conn->query($sql1);
+
+                        if ($result1->num_rows > 0) {
+                            // Output data of each row
+                            while ($rowpds = $result1->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $rowpds["file_type"] . "</td>";
+                                echo "<td>" . '<div id="output"></div>' . "  </td>";
+
+                                echo "<td>" . $rowpds["file_description"] . "</td>";
+                                echo "<td><a class='btn btn-danger m-1' href='manage-files.php?file_id= " . $row["employment_type"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='manage-files.php?file_id= " . $row["employment_type"] . "&purpose=delete' >Download File</a></td>";
+
+
+
+                                echo "</tr>";
+
+
+                    ?>
+                                <script>
+                                  function readFile(filePath) {
+    fetch(filePath)
+        .then(response => response.arrayBuffer())
+        .then(data => {
+            const workbook = XLSX.read(data, { type: 'array' });
+            const sheetHtml = XLSX.utils.sheet_to_html(workbook.Sheets[workbook.SheetNames[0]], { id: 'table_sheet' }); // Adding id and border properties
+            document.getElementById('output').innerHTML = sheetHtml;
+        });
+}
+
+readFile('<?= $rowpds["file_path"] ?>');
+
+                                </script>
+
+                    <?php
+
+                            }
+                        }
+
+
+
+                        $sql1 = "SELECT * FROM `files` WHERE user_id = $eid and user_type='employee' and file_type='saln'";
+                        $result1 = $conn->query($sql1);
+
+                        if ($result1->num_rows > 0) {
+                            // Output data of each row
+                            while ($rowpds = $result1->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $rowpds["file_type"] . "</td>";
+                                echo "<td>" . $rowpds["file_path"] . "</td>";
+                                echo "<td>" . $rowpds["file_description"] . "</td>";
+                                echo "<td><a class='btn btn-success' href='view-efiles.php?user_id= " . $row["employment_type"] . "' >View Files</a></td>";
+
+
+
+                                echo "</tr>";
+                            }
+                        }
+
+
+
+
+                        $sql1 = "SELECT * FROM `files` WHERE user_id = $eid and user_type='employee' and file_type='other'";
+                        $result1 = $conn->query($sql1);
+
+                        if ($result1->num_rows > 0) {
+                            // Output data of each row
+                            while ($rowpds = $result1->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $rowpds["file_type"] . "</td>";
+                                echo "<td>" . $rowpds["file_path"] . "</td>";
+                                echo "<td>" . $rowpds["file_description"] . "</td>";
+                                echo "<td><a class='btn btn-success' href='view-efiles.php?user_id= " . $row["employment_type"] . "' >View Files</a></td>";
+
+
+
+                                echo "</tr>";
+                            }
+                        }
+                    } else {
+                        echo "<tr><td colspan='8'>No results found</td></tr>";
+                    }
+
+
+
+                    ?>
+                </tbody>
+                <tfoot class="table-border-bottom-0">
+                    <tr>
+                        <th>File Type</th>
+                        <th>File</th>
+                        <th>File Description</th>
+                        <th>Action</th>
+
                     </tr>
                 </tfoot>
             </table>
