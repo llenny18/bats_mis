@@ -118,32 +118,7 @@ if ($resultuserdata->num_rows > 0) {
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">User Management</span></li>
             <!-- Cards -->
-            
-            <!-- User interface -->
-            <li class="menu-item">
-              <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div data-i18n="User interface">Profile</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="ui-accordion.php" class="menu-link">
-                    <div data-i18n="Accordion">PDS Files</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="ui-alerts.php" class="menu-link">
-                    <div data-i18n="Alerts">SALN</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="ui-badges.php" class="menu-link">
-                    <div data-i18n="Badges">Saved Files</div>
-                  </a>
-                </li>
-                
-              </ul>
-            </li>
+           
 
             <!-- Extended components -->
             <li class="menu-item">
@@ -232,7 +207,7 @@ if ($resultuserdata->num_rows > 0) {
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="view-afiles.php?user_id=<?= $_SESSION['admin_id']?>">
                         <i class="bx bx-cog me-2"></i>
                         <span class="align-middle">Settings</span>
                       </a>

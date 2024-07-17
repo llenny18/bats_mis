@@ -18,7 +18,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard | Employee List and Files</title>
+    <title>Dashboard | View User Files</title>
 
     <meta name="description" content="" />
 
@@ -51,8 +51,29 @@
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
 
-  
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/handsontable@8.4.0/dist/handsontable.full.min.css">
+<script src="https://cdn.jsdelivr.net/npm/handsontable@8.4.0/dist/handsontable.full.min.js"></script>
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+
+
     <script src="../assets/js/config.js"></script>
+    <style>
+      #output{
+width: 400px;
+height: 300px;
+overflow-y: scroll;
+overflow-x: scroll;
+      }
+        #table_sheet{
+border: 2px solid black;
+
+      }
+
+      #table_sheet td{
+
+border: 2px solid black;
+      }
+    </style>
   </head>
 
   <body>
@@ -76,7 +97,7 @@
 
               <!-- Bootstrap Table with Header - Footer -->
               <?php
-              displayEmployeeFiles($conn);
+              displayEmployeeFileSeparatedAdmin($conn, $_GET['user_id']);
               ?>
               <!-- Bootstrap Table with Header - Footer -->
 
