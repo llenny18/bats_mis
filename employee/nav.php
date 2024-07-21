@@ -1,8 +1,27 @@
+<?php
+if(!isset($_SESSION['admin_id'])){
+  echo "<script>window.location.href='login.php';</script>";
+}
+else{
+  $sqluser = "SELECT * FROM users where user_id = '{$_SESSION['admin_id']}'";
+$resultuserdata = $conn->query($sqluser);
+
+if ($resultuserdata->num_rows > 0) {
+  // output data of each row
+  $userData = $resultuserdata->fetch_assoc();
+}
+}
+
+
+?>
+
+
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.php" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <img src="../assets/img/logo.jpg" style="height: 100px;" alt="">
+                
+                <img src="../assets/img/logo.png" style="height: 100px;" alt="">
               </span>
               
             </a>
@@ -23,7 +42,7 @@
               </a>
             </li>
             <li class="menu-item">
-              <a href="cards-basic.php" class="menu-link">
+              <a href="calendar.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-calendar"></i>
                 <div data-i18n="Basic">Calendar</div>
               </a>
@@ -47,22 +66,18 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-without-navbar.php" class="menu-link">
+                  <a href="daily-logs.php" class="menu-link">
                     <div data-i18n="Without navbar">Daily Time Record</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="layouts-container.php" class="menu-link">
+                  <a href="leaves.php" class="menu-link">
                     <div data-i18n="Container">Leave Credits </div>
                   </a>
                 </li>
+                
                 <li class="menu-item">
-                  <a href="layouts-container.php" class="menu-link">
-                    <div data-i18n="Container">Confirmation </div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="layouts-container.php" class="menu-link">
+                  <a href="files.php" class="menu-link">
                     <div data-i18n="Container">Files </div>
                   </a>
                 </li>
@@ -75,7 +90,7 @@
                 <div data-i18n="Account Settings">Attendance</div>
               </a>
               <ul class="menu-sub">
-                <li class="menu-item">
+              <li class="menu-item">
                   <a href="employees-present.php" class="menu-link">
                     <div data-i18n="Account">List of Present</div>
                   </a>
@@ -92,7 +107,7 @@
                 </li>
                 
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.php" class="menu-link">
+                  <a href="users.php" class="menu-link">
                     <div data-i18n="Connections">User Management</div>
                   </a>
                 </li>
@@ -103,32 +118,7 @@
             <!-- Components -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">User Management</span></li>
             <!-- Cards -->
-            
-            <!-- User interface -->
-            <li class="menu-item">
-              <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div data-i18n="User interface">Profile</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="ui-accordion.php" class="menu-link">
-                    <div data-i18n="Accordion">PDS Files</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="ui-alerts.php" class="menu-link">
-                    <div data-i18n="Alerts">SALN</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="ui-badges.php" class="menu-link">
-                    <div data-i18n="Badges">Saved Files</div>
-                  </a>
-                </li>
-                
-              </ul>
-            </li>
+           
 
             <!-- Extended components -->
             <li class="menu-item">
@@ -180,11 +170,14 @@
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
                
-
+                <?= $userData['name'] ?>
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    
                     <div class="avatar avatar-online">
+                      
                       <img src="../assets/img/icons/icon1.png" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
@@ -198,8 +191,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block"><?=$userData['name'] ?></span>
+                            <small class="text-muted"><?=$userData['role'] ?></small>
                           </div>
                         </div>
                       </a>
@@ -208,31 +201,23 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="profile.php">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="view-afiles.php?user_id=<?= $_SESSION['admin_id']?>">
                         <i class="bx bx-cog me-2"></i>
                         <span class="align-middle">Settings</span>
                       </a>
                     </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                          <span class="flex-grow-1 align-middle">Billing</span>
-                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                        </span>
-                      </a>
-                    </li>
+                  
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.php">
+                      <a class="dropdown-item" href="logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>

@@ -1,5 +1,4 @@
 <?php include("../model/conn.php"); ?>
-
 <!DOCTYPE html>
 
 
@@ -18,7 +17,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard | Employee List</title>
+    <title>Container - Layouts | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
 
@@ -32,9 +31,7 @@
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link href="../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
-    
+
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
 
@@ -61,7 +58,7 @@
       <div class="layout-container">
         <!-- Menu -->
 
-        <?php include("./nav.php"); ?>
+       <?php include("./nav.php"); ?>
 
           <!-- / Navbar -->
 
@@ -70,19 +67,23 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> List</h4>
-
-              
-
-              <!-- Bootstrap Table with Header - Footer -->
-              <?php
-              displayEmployees($conn);
-              ?>
-              <!-- Bootstrap Table with Header - Footer -->
-
-              <hr class="my-5" />
-
-              <!--/ Responsive Table -->
+              <!-- Layout Demo -->
+              <div class="layout-demo-wrapper">
+                <div class="layout-demo-placeholder">
+                  <img
+                    src="../assets/img/layouts/layout-container-light.png"
+                    class="img-fluid"
+                    alt="Layout container"
+                    data-app-light-img="layouts/layout-container-light.png"
+                    data-app-dark-img="layouts/layout-container-dark.png"
+                  />
+                </div>
+                <div class="layout-demo-info">
+                  <h4>Layout container</h4>
+                  <p>Container layout sets a <code>max-width</code> at each responsive breakpoint.</p>
+                </div>
+              </div>
+              <!--/ Layout Demo -->
             </div>
             <!-- / Content -->
 
@@ -102,16 +103,8 @@
     </div>
     <!-- / Layout wrapper -->
 
-  
-    <script src="../assets/multicheck/datatable-checkbox-init.js"></script>
-    <script src="../assets/multicheck/jquery.multicheck.js"></script>
-    <script src="../assets/DataTables/datatables.min.js"></script>
-    <script>
-        /****************************************
-         *       Basic Table                   *
-         ****************************************/
-        $('#zero_config').DataTable();
-    </script>
+   
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>

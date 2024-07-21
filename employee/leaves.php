@@ -18,7 +18,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard | Employee List</title>
+    <title>Dashboard | Employee Leave Managements</title>
 
     <meta name="description" content="" />
 
@@ -70,13 +70,13 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> List</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> Leave Credits</h4>
 
               
 
               <!-- Bootstrap Table with Header - Footer -->
               <?php
-              displayEmployees($conn);
+              displayLeaveManagement($conn);
               ?>
               <!-- Bootstrap Table with Header - Footer -->
 
