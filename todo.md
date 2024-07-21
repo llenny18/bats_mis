@@ -13,6 +13,13 @@
         3. Calendar get the attendance of employees
 
 
+    * More to do
+        1. face recognition
+        2. Daily time record format
+        3. User profile pic using blob
+        4. leave form uploading 
+        5. Terms and conditions
+
 
 
 
