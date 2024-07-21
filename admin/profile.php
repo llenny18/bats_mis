@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Profile</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Profile <a href="view-afiles.php?user_id=<?= $_SESSION['employee_id'] ?>" class="btn btn-primary"> View my Files </a></h4>
 
               <div class="row">
                 <div class="col-md-12">

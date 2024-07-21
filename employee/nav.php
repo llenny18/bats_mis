@@ -50,40 +50,6 @@ if ($resultuserdata->num_rows > 0) {
             <!-- Layouts -->
            
 
-            <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Employees</span>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user-pin"></i>
-                <div data-i18n="Layouts">Management</div>
-              </a>
-
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="employees.php" class="menu-link">
-                    <div data-i18n="Without menu">List of Employees</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="daily-logs.php" class="menu-link">
-                    <div data-i18n="Without navbar">Daily Time Record</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="leaves.php" class="menu-link">
-                    <div data-i18n="Container">Leave Credits </div>
-                  </a>
-                </li>
-                
-                <li class="menu-item">
-                  <a href="files.php" class="menu-link">
-                    <div data-i18n="Container">Files </div>
-                  </a>
-                </li>
-              
-              </ul>
-            </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-list-ol"></i>
@@ -106,17 +72,13 @@ if ($resultuserdata->num_rows > 0) {
                   </a>
                 </li>
                 
-                <li class="menu-item">
-                  <a href="users.php" class="menu-link">
-                    <div data-i18n="Connections">User Management</div>
-                  </a>
-                </li>
+                
               </ul>
             </li>
             
            
             <!-- Components -->
-            <li class="menu-header small text-uppercase"><span class="menu-header-text">User Management</span></li>
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Leave Management</span></li>
             <!-- Cards -->
            
 
