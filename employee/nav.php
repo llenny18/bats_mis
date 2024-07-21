@@ -1,9 +1,9 @@
 <?php
-if(!isset($_SESSION['admin_id'])){
+if(!isset($_SESSION['employee_id'])){
   echo "<script>window.location.href='login.php';</script>";
 }
 else{
-  $sqluser = "SELECT * FROM users where user_id = '{$_SESSION['admin_id']}'";
+  $sqluser = "SELECT * FROM employeedetails where employee_id = '{$_SESSION['employee_id']}'";
 $resultuserdata = $conn->query($sqluser);
 
 if ($resultuserdata->num_rows > 0) {
@@ -170,7 +170,7 @@ if ($resultuserdata->num_rows > 0) {
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
                
-                <?= $userData['name'] ?>
+                <?= $userData['first_name'] . " ". $userData['last_name'] ?>
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   
@@ -191,8 +191,8 @@ if ($resultuserdata->num_rows > 0) {
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block"><?=$userData['name'] ?></span>
-                            <small class="text-muted"><?=$userData['role'] ?></small>
+                            <span class="fw-semibold d-block"><?= $userData['first_name'] . " ". $userData['last_name'] ?></span>
+                            <small class="text-muted"><?= ucwords($userData['employment_type']) ?></small>
                           </div>
                         </div>
                       </a>
@@ -207,7 +207,7 @@ if ($resultuserdata->num_rows > 0) {
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="view-afiles.php?user_id=<?= $_SESSION['admin_id']?>">
+                      <a class="dropdown-item" href="view-afiles.php?user_id=<?= $_SESSION['employee_id']?>">
                         <i class="bx bx-cog me-2"></i>
                         <span class="align-middle">Settings</span>
                       </a>

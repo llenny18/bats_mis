@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $stmt->execute();
       
       if ($stmt->affected_rows > 0) {
-          echo "<script>alert('Account deactivated successfully'); window.location.href = 'index.php';</script>";
+          echo "<script>alert('Account deactivated successfully'); window.location.href = 'logout.php';</script>";
         } else {
           echo "<script>alert('Failed to deactivate account'); window.location.href = 'index.php';</script>";
       }

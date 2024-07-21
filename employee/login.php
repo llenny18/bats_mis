@@ -8,7 +8,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Login as Administrator</title>
+  <title>Login as Employee</title>
 
   <meta name="description" content="" />
 
@@ -68,17 +68,17 @@
               $password = $_POST['password'];
 
               // Check if user exists
-              $stmt = $conn->prepare("SELECT user_id, username, email, password, role FROM users WHERE (username = ? OR email = ?) AND password = ? and a_status='Active'");
+              $stmt = $conn->prepare("SELECT employee_id, user_name, email, user_password FROM employeedetails WHERE (user_name = ? OR email = ?) AND user_password = ? and e_status='Active'");
               $stmt->bind_param("sss", $emailOrUsername, $emailOrUsername, $password);
               $stmt->execute();
               $stmt->store_result();
 
               if ($stmt->num_rows > 0) {
-                $stmt->bind_result($user_id, $username, $email, $hashedPassword, $role);
+                $stmt->bind_result($employee_id, $user_name, $email, $user_password);
                 $stmt->fetch();
 
                 if ($stmt->num_rows > 0) {
-                  $_SESSION['admin_id'] = $user_id;
+                  $_SESSION['employee_id'] = $employee_id;
                   echo "<script>alert('Login successful'); window.location.href = 'index.php';</script>";
                 } else {
                   echo "<script>alert('Invalid credentials');</script>";

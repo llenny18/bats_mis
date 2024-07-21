@@ -56,47 +56,48 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (isset($_POST['updateAccount'])) {
       // Retrieve form data
-      $user_id = $_POST['user_id'];
-      $username = $_POST['username'];
-      $password = $_POST['password'];
-      $role = $_POST['role'];
-      $name = $_POST['name'];
+      $employee_id = $_POST['employee_id'];
+      $user_name = $_POST['username'];
+      $user_password = $_POST['password'];
+      $employment_type = $_POST['employment_type'];
+      $first_name = $_POST['first_name'];
+      $last_name = $_POST['last_name'];
+      $date_of_birth = $_POST['date_of_birth'];
       $email = $_POST['email'];
-      $contact_number = $_POST['contact_number'];
-      $address = $_POST['address'];
+      $phone_number = $_POST['phone_number'];
       
-      // Update user data in the database
-      $updateQuery = "UPDATE users 
-                      SET username = ?, password = ?, role = ?, name = ?, email = ?, contact_number = ?, address = ?
-                      WHERE user_id = ?";
+      // Update employee data in the database
+      $updateQuery = "UPDATE employeedetails 
+                      SET user_name = ?, user_password = ?, employment_type = ?, first_name = ?, last_name = ?, date_of_birth = ?, email = ?, phone_number = ?
+                      WHERE employee_id = ?";
       $stmt = $conn->prepare($updateQuery);
-      $stmt->bind_param("sssssssi", $username, $password, $role, $name, $email, $contact_number, $address, $user_id);
+      $stmt->bind_param("ssssssssi", $user_name, $user_password, $employment_type, $first_name, $last_name, $date_of_birth, $email, $phone_number,  $employee_id);
       $stmt->execute();
       
       if ($stmt->affected_rows > 0) {
-          echo "<script>alert('Account updated successfully'); window.location.href = 'index.php';</script>";
+          echo "<script>alert('Employee details updated successfully'); window.location.href = 'index.php';</script>";
         } else {
           echo "<script>alert('No changes made.'); window.location.href = 'index.php';</script>";
       }
   } else if (isset($_POST['deactivateAccount'])) {
-      // Deactivate user account (in this case, 'deactivation' might involve updating a status field)
-      // Note: Since the new schema doesn't have a status field, you might need to modify your database schema accordingly.
-      $user_id = $_SESSION['admin_id'];
+      // Deactivate employee account
+      $employee_id = $_SESSION['employee_id'];
       
-      // Example of setting a field or updating status (if applicable)
-      $deactivateQuery = "UPDATE users SET a_status = 'Deleted' WHERE user_id = ?";
+      // Update the status field to 'Deleted'
+      $deactivateQuery = "UPDATE employeedetails SET e_status = 'Deleted' WHERE employee_id = ?";
       $stmt = $conn->prepare($deactivateQuery);
-      $stmt->bind_param("i", $user_id);
+      $stmt->bind_param("i", $employee_id);
       $stmt->execute();
       
       if ($stmt->affected_rows > 0) {
-          echo "<script>alert('Account deactivated successfully'); window.location.href = 'index.php';</script>";
+          echo "<script>alert('Account deactivated successfully'); window.location.href = 'logout.php';</script>";
         } else {
           echo "<script>alert('Failed to deactivate account'); window.location.href = 'index.php';</script>";
       }
   }
 }
 ?>
+
 
   <body>
     <!-- Layout wrapper -->
@@ -162,15 +163,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                               class="form-control"
                               type="text"
                               id="firstName"
-                              name="user_id"
-                              value="<?= $userData['user_id']  ?>"
+                              name="employee_id"
+                              value="<?= $userData['employee_id']  ?>"
                               readonly
                               autofocus
                             />
                           </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Full Name</label>
-                            <input class="form-control" type="text" name="name" id="lastName" value="<?= $userData['name']  ?>" />
+                          <div class="mb-3 col-md-3">
+                            <label for="lastName" class="form-label">First Name</label>
+                            <input class="form-control" type="text" name="first_name" id="lastName" value="<?= $userData['first_name']  ?>" />
+                          </div>
+                          <div class="mb-3 col-md-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input class="form-control" type="text" name="last_name" id="lastName" value="<?=  $userData['last_name']  ?>" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -184,13 +189,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Role</label>
+                            <label for="organization" class="form-label">Employment Type</label>
                             <input
                               type="text"
                               class="form-control"
                               id="organization"
-                              name="role"
-                              value="<?= $userData['role']  ?>"
+                              name="employment_type"
+                              value="<?= $userData['employment_type']  ?>"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -200,31 +205,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                               <input
                                 type="text"
                                 id="phoneNumber"
-                                name="contact_number"
+                                name="phone_number"
                                 class="form-control"
                                 placeholder="0934234422"
-                                value="<?= $userData['contact_number']  ?>"
+                                value="<?= $userData['phone_number']  ?>"
                               />
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address"  value="<?= $userData['address']  ?>" name="address" placeholder="Address" />
+                            <label for="address" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="address"  value="<?= $userData['date_of_birth']  ?>" name="date_of_birth" placeholder="Address" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="state" class="form-label">Username</label>
-                            <input class="form-control" type="text" value="<?= $userData['username']  ?>" id="state" name="username" placeholder="California" />
+                            <input class="form-control" type="text" value="<?= $userData['user_name']  ?>" id="state" name="username" placeholder="California" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="zipCode" class="form-label">Passsword</label>
+                            <label for="zipCode" class="form-label">Password</label>
                             <input
                               type="text"
                               class="form-control"
                               id="zipCode"
                               name="password"
                               placeholder="231465"
-                              value="<?= $userData['password']  ?>"
-                              maxlength="6"
+                              value="<?= $userData['user_password']  ?>"
+                         
                             />
                           </div>
                    
