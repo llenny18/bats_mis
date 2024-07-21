@@ -51,6 +51,52 @@
   
     <script src="../assets/js/config.js"></script>
   </head>
+  <?php 
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if (isset($_POST['updateAccount'])) {
+      // Retrieve form data
+      $user_id = $_POST['user_id'];
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $role = $_POST['role'];
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $contact_number = $_POST['contact_number'];
+      $address = $_POST['address'];
+      
+      // Update user data in the database
+      $updateQuery = "UPDATE users 
+                      SET username = ?, password = ?, role = ?, name = ?, email = ?, contact_number = ?, address = ?
+                      WHERE user_id = ?";
+      $stmt = $conn->prepare($updateQuery);
+      $stmt->bind_param("sssssssi", $username, $password, $role, $name, $email, $contact_number, $address, $user_id);
+      $stmt->execute();
+      
+      if ($stmt->affected_rows > 0) {
+          echo "<script>alert('Account updated successfully'); window.location.href = 'index.php';</script>";
+        } else {
+          echo "<script>alert('No changes made.'); window.location.href = 'index.php';</script>";
+      }
+  } else if (isset($_POST['deactivateAccount'])) {
+      // Deactivate user account (in this case, 'deactivation' might involve updating a status field)
+      // Note: Since the new schema doesn't have a status field, you might need to modify your database schema accordingly.
+      $user_id = $_SESSION['admin_id'];
+      
+      // Example of setting a field or updating status (if applicable)
+      $deactivateQuery = "UPDATE users SET a_status = 'Deleted' WHERE user_id = ?";
+      $stmt = $conn->prepare($deactivateQuery);
+      $stmt->bind_param("i", $user_id);
+      $stmt->execute();
+      
+      if ($stmt->affected_rows > 0) {
+          echo "<script>alert('Account deactivated successfully'); window.location.href = 'index.php';</script>";
+        } else {
+          echo "<script>alert('Failed to deactivate account'); window.location.href = 'index.php';</script>";
+      }
+  }
+}
+?>
 
   <body>
     <!-- Layout wrapper -->
@@ -108,7 +154,7 @@
                     </div>
                     <hr class="my-0" />
                     <div class="card-body">
-                      <form id="formAccountSettings" method="POST" onsubmit="return false">
+                      <form id="formAccountSettings" method="POST">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">Admin ID</label>
@@ -116,7 +162,7 @@
                               class="form-control"
                               type="text"
                               id="firstName"
-                              name="firstName"
+                              name="user_id"
                               value="<?= $userData['user_id']  ?>"
                               readonly
                               autofocus
@@ -124,7 +170,7 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Full Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="<?= $userData['name']  ?>" />
+                            <input class="form-control" type="text" name="name" id="lastName" value="<?= $userData['name']  ?>" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -143,7 +189,7 @@
                               type="text"
                               class="form-control"
                               id="organization"
-                              name="organization"
+                              name="role"
                               value="<?= $userData['role']  ?>"
                             />
                           </div>
@@ -154,7 +200,7 @@
                               <input
                                 type="text"
                                 id="phoneNumber"
-                                name="phoneNumber"
+                                name="contact_number"
                                 class="form-control"
                                 placeholder="0934234422"
                                 value="<?= $userData['contact_number']  ?>"
@@ -167,7 +213,7 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="state" class="form-label">Username</label>
-                            <input class="form-control" type="text" value="<?= $userData['username']  ?>" id="state" name="state" placeholder="California" />
+                            <input class="form-control" type="text" value="<?= $userData['username']  ?>" id="state" name="username" placeholder="California" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="zipCode" class="form-label">Passsword</label>
@@ -175,7 +221,7 @@
                               type="text"
                               class="form-control"
                               id="zipCode"
-                              name="zipCode"
+                              name="password"
                               placeholder="231465"
                               value="<?= $userData['password']  ?>"
                               maxlength="6"
@@ -184,7 +230,7 @@
                    
                         </div>
                         <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                          <button type="submit" name="updateAccount" class="btn btn-primary me-2">Save changes</button>
                           <button type="reset" class="btn btn-outline-secondary">Cancel</button>
                         </div>
                       </form>
@@ -200,7 +246,7 @@
                           <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
                         </div>
                       </div>
-                      <form id="formAccountDeactivation" onsubmit="return false">
+                      <form id="formAccountDeactivation" method="post">
                         <div class="form-check mb-3">
                           <input
                             class="form-check-input"
@@ -212,7 +258,7 @@
                             >I confirm my account deactivation</label
                           >
                         </div>
-                        <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
+                        <button type="submit" name="deactivateAccount" class="btn btn-danger deactivate-account">Deactivate Account</button>
                       </form>
                     </div>
                   </div>

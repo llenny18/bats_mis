@@ -68,7 +68,7 @@
               $password = $_POST['password'];
 
               // Check if user exists
-              $stmt = $conn->prepare("SELECT user_id, username, email, password, role FROM users WHERE (username = ? OR email = ?) AND password = ?");
+              $stmt = $conn->prepare("SELECT user_id, username, email, password, role FROM users WHERE (username = ? OR email = ?) AND password = ? and a_status='Active'");
               $stmt->bind_param("sss", $emailOrUsername, $emailOrUsername, $password);
               $stmt->execute();
               $stmt->store_result();
