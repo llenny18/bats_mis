@@ -33,7 +33,7 @@ function displayDailyLogs($conn)
                             echo "<td>" . date("g:i a", strtotime($row["time_in"])) . " - " . date("g:i a", strtotime($row["time_out"])) .  "</td>";
                             echo "<td>" . date("F j, Y", strtotime($row["date"])) . "</td>";
 
-                           
+
                             echo "</tr>";
                         }
                     } else {
@@ -102,8 +102,8 @@ function displayUserEmployees($conn)
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item btn btn-success mb-1" href="../controller/manage-employees.php?employee_id=<?= $row["employee_id"] ?>&purpose=activate"><i class="bx bx-edit-alt me-2"></i> Activate</a>
-                                <a class="dropdown-item btn btn-primary mb-1" href="manage-employee.php?employee_id=<?= $row["employee_id"] ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
+                                    <a class="dropdown-item btn btn-success mb-1" href="../controller/manage-employees.php?employee_id=<?= $row["employee_id"] ?>&purpose=activate"><i class="bx bx-edit-alt me-2"></i> Activate</a>
+                                    <a class="dropdown-item btn btn-primary mb-1" href="manage-employee.php?employee_id=<?= $row["employee_id"] ?>"><i class="bx bx-edit-alt me-2"></i> Edit</a>
                                     <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-employees.php?employee_id=<?= $row["employee_id"] ?>&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
                                 </div>
                             </div>
@@ -261,7 +261,6 @@ function viewEmployeeAccountStatus($conn, $eid)
         }
     } else {
         echo "<td>" . '<span class="badge bg-label-danger me-1">Deleted</span>' . "</td>";
-       
     }
 }
 
@@ -332,7 +331,7 @@ function displayEmployees($conn)
 
 function displayEmployeesOnLeave($conn)
 {
-    $sql = "SELECT employee_id, user_name, first_name, last_name, employment_type, date_of_birth, email, phone_number FROM employeedetails inner join attendance on attendance.user_id = employeedetails.employee_id where attendance.status = 'on_leave' and e_status = 'Active'";
+    $sql = "SELECT employee_id, user_name, first_name, last_name, employment_type, date_of_birth, email, phone_number FROM employeedetails inner join attendance on attendance.user_id = employeedetails.employee_id where attendance.status = 'on_leave' and e_status = 'Active' and attendance.date  = curdate()";
     $result = $conn->query($sql);
 ?>
     <div class="card">
@@ -394,7 +393,7 @@ function displayEmployeesOnLeave($conn)
 
 function displayEmployeesPresent($conn)
 {
-    $sql = "SELECT employee_id, user_name, first_name, last_name, employment_type, date_of_birth, email, phone_number FROM employeedetails inner join attendance on attendance.user_id = employeedetails.employee_id where attendance.status = 'present' and e_status = 'Active'";
+    $sql = "SELECT employee_id, user_name, first_name, last_name, employment_type, date_of_birth, email, phone_number FROM employeedetails inner join attendance on attendance.user_id = employeedetails.employee_id where attendance.status = 'present' and e_status = 'Active' and attendance.date  = curdate()";
     $result = $conn->query($sql);
 ?>
     <div class="card">
@@ -548,14 +547,14 @@ function displayLeaveManagement($conn)
                         // Output data of each row
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
-                            echo "<td>" . $row["first_name"]." ". $row["last_name"]. "</td>";
+                            echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>";
                             echo "<td>" . $row["user_type"] . "</td>";
                             echo "<td>" . $row["more_info"] . "</td>";
                             echo "<td>" . $row["leave_type"] . "</td>";
                             echo "<td>" . $row["start_date"] . "</td>";
                             echo "<td>" . $row["end_date"] . "</td>";
                             viewLeaveStatus($conn, $row["leave_id"]);
-                            
+
                             echo "<td>";
                     ?>
                             <div class="dropdown text-center">
@@ -578,7 +577,7 @@ function displayLeaveManagement($conn)
                 </tbody>
                 <tfoot class="table-border-bottom-0">
                     <tr>
-                    <th>Name</th>
+                        <th>Name</th>
                         <th>User Type</th>
                         <th>More Info</th>
                         <th>Leave Type</th>
@@ -726,19 +725,19 @@ function displayEmployeeFileSeparated($conn, $eid)
 
                                 echo "<td>";
                                 ?>
-                                        <div class="dropdown text-center">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item btn btn-primary mb-1" href='" . $rowpds["file_path"] . "'  download"><i class="bx bx-download me-2"></i> Download</a>
-                                                <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
-                                            </div>
-                                        </div>
+                                <div class="dropdown text-center">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item btn btn-primary mb-1" href='" . $rowpds["file_path"] . "' download"><i class="bx bx-download me-2"></i> Download</a>
+                                        <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
+                                    </div>
+                                </div>
                                 <?php
-                                        echo "</td>";
+                                echo "</td>";
 
-                              
+
 
 
 
@@ -764,7 +763,7 @@ function displayEmployeeFileSeparated($conn, $eid)
                                     readFile('<?= $rowpds["file_path"] ?>');
                                 </script>
 
-                    <?php
+                                <?php
 
                             }
                         }
@@ -781,7 +780,7 @@ function displayEmployeeFileSeparated($conn, $eid)
                                 echo "<td>" . $rowpds["file_type"] . "</td>";
                                 if ((strpos($rowpds["file_path"], '.pdf') !== false)) {
                                     echo "<td>";
-                    ?>
+                                ?>
                                     <iframe src="<?= $rowpds["file_path"] ?>" width="600" height="400"></iframe>
                                 <?php
                                     echo "/<td>";
@@ -817,7 +816,7 @@ function displayEmployeeFileSeparated($conn, $eid)
                                     readFile('<?= $rowpds["file_path"] ?>');
                                 </script>
 
-                    <?php
+                                <?php
 
                             }
                         }
@@ -835,7 +834,7 @@ function displayEmployeeFileSeparated($conn, $eid)
                                 echo "<td>" . $rowpds["file_type"] . "</td>";
                                 if ((strpos($rowpds["file_path"], '.pdf') !== false)) {
                                     echo "<td>";
-                    ?>
+                                ?>
                                     <iframe src="<?= $rowpds["file_path"] ?>" width="600" height="400"></iframe>
                                 <?php
                                     echo "/<td>";
@@ -954,19 +953,19 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
 
                                 echo "<td>";
                                 ?>
-                                        <div class="dropdown text-center">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item btn btn-primary mb-1" href='" . $rowpds["file_path"] . "'  download"><i class="bx bx-download me-2"></i> Download</a>
-                                                <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
-                                            </div>
-                                        </div>
+                                <div class="dropdown text-center">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item btn btn-primary mb-1" href='" . $rowpds["file_path"] . "' download"><i class="bx bx-download me-2"></i> Download</a>
+                                        <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
+                                    </div>
+                                </div>
                                 <?php
-                                        echo "</td>";
+                                echo "</td>";
 
-                              
+
 
 
 
@@ -992,7 +991,7 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
                                     readFile('<?= $rowpds["file_path"] ?>');
                                 </script>
 
-                    <?php
+                                <?php
 
                             }
                         }
@@ -1009,7 +1008,7 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
                                 echo "<td>" . $rowpds["file_type"] . "</td>";
                                 if ((strpos($rowpds["file_path"], '.pdf') !== false)) {
                                     echo "<td>";
-                    ?>
+                                ?>
                                     <iframe src="<?= $rowpds["file_path"] ?>" width="600" height="400"></iframe>
                                 <?php
                                     echo "/<td>";
@@ -1045,7 +1044,7 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
                                     readFile('<?= $rowpds["file_path"] ?>');
                                 </script>
 
-                    <?php
+                                <?php
 
                             }
                         }
@@ -1063,7 +1062,7 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
                                 echo "<td>" . $rowpds["file_type"] . "</td>";
                                 if ((strpos($rowpds["file_path"], '.pdf') !== false)) {
                                     echo "<td>";
-                    ?>
+                                ?>
                                     <iframe src="<?= $rowpds["file_path"] ?>" width="600" height="400"></iframe>
                                 <?php
                                     echo "/<td>";
@@ -1124,9 +1123,121 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
 
 
 
-<?php
+    <?php
 
 }
+
+
+function displayTotalEmp($conn)
+{
+    $sql = "SELECT * FROM `total_emp`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['total'];
+}
+
+
+function displayTotalPercentA($conn)
+{
+    $sql = "SELECT * FROM `percent_attendees`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['absents'] * 100.00;
+}
+
+function displayTotalPercentP($conn)
+{
+    $sql = "SELECT * FROM `percent_attendees`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['presents'] * 100.00;
+}
+
+function displayTotalFiles($conn)
+{
+    $sql = "SELECT * FROM `total_files`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['total'];
+}
+
+
+function displayAveragePercent($conn)
+{
+    $sql = "SELECT * FROM `avg_perc`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['average']*100;
+}
+
+
+function displayAveragePercentP($conn)
+{
+    $sql = "SELECT * FROM `avg_perc`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo 100-($row['average']*100);
+}
+
+
+
+
+function displayAverageCountA($conn)
+{
+    $sql = "SELECT * FROM `count_avg_perc`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['average_absent'];
+}
+
+function displayAverageCountP($conn)
+{
+    $sql = "SELECT * FROM `count_avg_perc`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['average_present'];
+}
+
+
+
+function displayActiveECount($conn)
+{
+    $sql = "SELECT count(*) as total FROM `employeedetails` WHERE e_status = 'Active';";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['total'];
+}
+
+function displayLCdata($conn)
+{
+    $sql = "SELECT * FROM `count_avg_perc`";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    echo $row['average_present'];
+}
+
+function displayMonthlyAttendance($conn)
+{
+    $sql = "SELECT * FROM `lc_data`";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $absents = [];
+        $presents = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $absents[] = $row['absents'];
+            $presents[] = $row['present_count'];
+        }
+
+        $absents_json = json_encode($absents);
+        $presents_json = json_encode($presents);
+
+        echo  $presents_json;
+    
+    }
+}
+
 
 
 

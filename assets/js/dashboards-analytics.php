@@ -1,3 +1,7 @@
+<script>
+
+
+
 
 /**
  * Dashboard Analytics
@@ -18,14 +22,7 @@
   const totalRevenueChartEl = document.querySelector('#totalRevenueChart'),
     totalRevenueChartOptions = {
       series: [
-        {
-          name: '2021',
-          data: [18, 7, 15, 29, 18, 12, 9]
-        },
-        {
-          name: '2020',
-          data: [-13, -18, -9, -14, -5, -17, -15]
-        }
+        <?php displayMonthlyAttendance($conn) ?>
       ],
       chart: {
         height: 300,
@@ -79,7 +76,7 @@
         }
       },
       xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         labels: {
           style: {
             fontSize: '13px',
@@ -279,8 +276,8 @@
   // --------------------------------------------------------------------
   const growthChartEl = document.querySelector('#growthChart'),
     growthChartOptions = {
-      series: [78],
-      labels: ['Growth'],
+      series: [<?php displayAveragePercentP($conn); ?>],
+      labels: ['Monthly Present Percentage'],
       chart: {
         height: 240,
         type: 'radialBar'
@@ -395,7 +392,7 @@
       },
       series: [
         {
-          data: [110, 270, 145, 245, 205, 285]
+          data: <?php displayMonthlyAttendance($conn)  ?>
         }
       ],
       xaxis: {
@@ -661,3 +658,4 @@
     weeklyExpenses.render();
   }
 })();
+</script>
