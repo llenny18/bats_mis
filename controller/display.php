@@ -1242,4 +1242,39 @@ function displayMonthlyAttendance($conn)
 
 
 
+function displayCalendarData($conn) {
+    $sql = "SELECT `date`, `present_count`, `absents` FROM `calendar_data`";
+    $result = $conn->query($sql);
+
+    $events = array();
+
+    if ($result->num_rows > 0) {
+        $index = 1;
+        while ($row = $result->fetch_assoc()) {
+            $event = array(
+                "from" => 'new Date("'.$row["date"].'")',
+                "to" => 'new Date("'.$row["date"].'")',
+                "title" => "Present: ".$row["present_count"].", Absent: ".$row["absents"],
+                "description" => "Present employees today"
+            );
+            $events[] = 'event' . $index . ' = {
+                from: ' . $event["from"] . ',
+                to: ' . $event["to"] . ',
+                title: "' . $event["title"] . '",
+                description: "' . $event["description"] . '"
+            }';
+            
+            $index++;
+        }
+    } else {
+        echo "0 results";
+        return;
+    }
+
+    // Join the events into a single string with each event assigned to a variable
+    echo implode(",\n", $events);
+}
+
+
+
 ?>

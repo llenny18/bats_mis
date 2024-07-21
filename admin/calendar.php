@@ -136,21 +136,15 @@
             }
         } );
 
+       
 
-        var event1 = {
-                from: new Date("2024-07-11"),
-                to: new Date("2024-07-12"),
-                title: "New Event 1",
-                description: "A description of the new event"
-            },
-            event2 = {
-                from: new Date(),
-                to: new Date(),
-                title: "New Event 2",
-                description: "A description of the new event"
-            };
 
-            calendarInstance.addEvent( event1 );
+
+         <?php displayCalendarData($conn) ?>;
+
+         <?php  for($i = 1; $i<=366;$i++ ) { ?>
+            calendarInstance.addEvent( event<?=$i ?> );
+            <?php  } ?>
 
         document.title += " v" + calendarInstance.getVersion();
         document.getElementById( "header" ).innerText += " - v" + calendarInstance.getVersion();

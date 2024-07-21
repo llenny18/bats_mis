@@ -9,7 +9,7 @@
   --calendar-js-title-bar-font-weight: 900;
   --calendar-js-large-font-size: 0.9rem;
   --calendar-js-small-font-size: 0.7rem;
-  --calendar-js-dark-color: #3b3a3a;
+  --calendar-js-dark-color: #073f77;
   --calendar-js-dark-lighter-color: #575555;
   --calendar-js-light-color: #F5F5F5;
   --calendar-js-day-date-picker-hover-color: #a7a7a7;
@@ -59,7 +59,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --calendar-js-dark-color: #282828;
+    --calendar-js-dark-color: #073f77;
     --calendar-js-input-hover-color: var(--calendar-js-dark-color);
     --calendar-js-primary-button-color: var(--calendar-js-dark-color);
     --calendar-js-secondary-button-color: var(--calendar-js-dark-color);
