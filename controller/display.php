@@ -537,6 +537,7 @@ function displayLeaveManagement($conn)
                         <th>Leave Type</th>
                         <th>Start Date</th>
                         <th>End Date</th>
+                        <th>File</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -553,6 +554,11 @@ function displayLeaveManagement($conn)
                             echo "<td>" . $row["leave_type"] . "</td>";
                             echo "<td>" . $row["start_date"] . "</td>";
                             echo "<td>" . $row["end_date"] . "</td>";
+                            echo "<td>";  ?>
+                         
+                              <iframe src="data:application/pdf;base64,<?php echo base64_encode($row['file_data']); ?>" type="application/pdf"  height="500px"></iframe>
+                        
+                            <?php echo "</td>";
                             viewLeaveStatus($conn, $row["leave_id"]);
 
                             echo "<td>";

@@ -84,7 +84,7 @@ if ($resultuserdata->num_rows > 0) {
 
             <!-- Extended components -->
             <li class="menu-item">
-              <a href="javascript:void(0)" class="menu-link menu-toggle">
+              <a href="manage-leaves.php" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Extended UI">File a Leave</div>
               </a>
