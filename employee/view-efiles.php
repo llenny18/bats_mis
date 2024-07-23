@@ -1,4 +1,4 @@
-<?php include("../model/conn.php"); ?>
+<?php include("../model/conne.php"); ?>
 
 <!DOCTYPE html>
 
@@ -91,7 +91,7 @@ border: 2px solid black;
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> List</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> List <a href="manage-files.php" class="btn btn-primary">+ Add my File</a></h4>
 
               
 

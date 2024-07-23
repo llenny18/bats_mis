@@ -731,7 +731,7 @@ function displayEmployeeFileSeparated($conn, $eid)
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item btn btn-primary mb-1" href='" . $rowpds["file_path"] . "' download"><i class="bx bx-download me-2"></i> Download</a>
-                                        <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
+                                        <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-filese.php?file_id=" . $rowpds["file_id"] . "&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
                                     </div>
                                 </div>
                                 <?php
@@ -790,7 +790,7 @@ function displayEmployeeFileSeparated($conn, $eid)
                                 }
 
                                 echo "<td>" . $rowpds["file_description"] . "</td>";
-                                echo "<td><a class='btn btn-danger m-1' href='../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='" . $rowpds["file_path"] . "'  download>Download File</a></td>";
+                                echo "<td><a class='btn btn-danger m-1' href='../controller/manage-filese.php?file_id=" . $rowpds["file_id"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='" . $rowpds["file_path"] . "'  download>Download File</a></td>";
 
 
 
@@ -844,7 +844,7 @@ function displayEmployeeFileSeparated($conn, $eid)
                                 }
 
                                 echo "<td>" . $rowpds["file_description"] . "</td>";
-                                echo "<td><a class='btn btn-danger m-1' href='../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='" . $rowpds["file_path"] . "'  download>Download File</a></td>";
+                                echo "<td><a class='btn btn-danger m-1' href='../controller/manage-filese.php?file_id=" . $rowpds["file_id"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='" . $rowpds["file_path"] . "'  download>Download File</a></td>";
 
 
 
@@ -959,7 +959,7 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item btn btn-primary mb-1" href='" . $rowpds["file_path"] . "' download"><i class="bx bx-download me-2"></i> Download</a>
-                                        <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
+                                        <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-filese.php?file_id=" . $rowpds["file_id"] . "&purpose=delete"><i class="bx bx-trash me-2"></i> Delete</a>
                                     </div>
                                 </div>
                                 <?php
@@ -1018,7 +1018,7 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
                                 }
 
                                 echo "<td>" . $rowpds["file_description"] . "</td>";
-                                echo "<td><a class='btn btn-danger m-1' href='../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='" . $rowpds["file_path"] . "'  download>Download File</a></td>";
+                                echo "<td><a class='btn btn-danger m-1' href='../controller/manage-filese.php?file_id=" . $rowpds["file_id"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='" . $rowpds["file_path"] . "'  download>Download File</a></td>";
 
 
 
@@ -1072,7 +1072,7 @@ function displayEmployeeFileSeparatedAdmin($conn, $eid)
                                 }
 
                                 echo "<td>" . $rowpds["file_description"] . "</td>";
-                                echo "<td><a class='btn btn-danger m-1' href='../controller/manage-files.php?file_id=" . $rowpds["file_id"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='" . $rowpds["file_path"] . "'  download>Download File</a></td>";
+                                echo "<td><a class='btn btn-danger m-1' href='../controller/manage-filese.php?file_id=" . $rowpds["file_id"] . "&purpose=delete' >Delete File</a><br><a class='btn btn-primary m-1' href='" . $rowpds["file_path"] . "'  download>Download File</a></td>";
 
 
 

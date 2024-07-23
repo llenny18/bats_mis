@@ -723,7 +723,7 @@ function displayEmployeeFileSeparated($conn, $eid)
                                     echo "/<td>";
                                 }
                                 if (((strpos($rowpds["file_path"], '.xls') !== false)) || ((strpos($rowpds["file_path"], '.xlsx') !== false))) {
-                                    echo "<td>" . '<div id="output' . $rowpds["file_id"] . '"></div>' . "  </td>";
+                                    echo "<td>" . '<div style="width: 300px; height: 400px; oveflow-x: scroll; overflow-y: scroll;" ><div  id="output' . $rowpds["file_id"] . '"></div></div>' . "  </td>";
                                 }
 
                                 echo "<td>" . $rowpds["file_description"] . "</td>";

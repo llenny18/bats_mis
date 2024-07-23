@@ -178,16 +178,16 @@ if ($resultuserdata->num_rows > 0) {
                     
                     <div class="avatar avatar-online">
                       
-                      <img src="../assets/img/icons/icon1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="data:image/jpeg;base64, <?php echo base64_encode($userData['user_icon']) ?>" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="profile.php">
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../assets/img/icons/icon1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="data:image/jpeg;base64, <?php echo base64_encode($userData['user_icon']) ?>" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
@@ -208,8 +208,8 @@ if ($resultuserdata->num_rows > 0) {
                     </li>
                     <li>
                       <a class="dropdown-item" href="view-afiles.php?user_id=<?= $_SESSION['admin_id']?>">
-                        <i class="bx bx-cog me-2"></i>
-                        <span class="align-middle">Settings</span>
+                      <i class="bx bx-file-blank me-2"></i>
+                      <span class="align-middle">My Files</span>
                       </a>
                     </li>
                   
