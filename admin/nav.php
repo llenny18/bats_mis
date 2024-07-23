@@ -77,6 +77,11 @@ if ($resultuserdata->num_rows > 0) {
                 </li>
                 
                 <li class="menu-item">
+                  <a href="travel_orders.php" class="menu-link">
+                    <div data-i18n="Connections">Travel Orders</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="files.php" class="menu-link">
                     <div data-i18n="Container">Files </div>
                   </a>
@@ -106,6 +111,7 @@ if ($resultuserdata->num_rows > 0) {
                   </a>
                 </li>
                 
+                
                 <li class="menu-item">
                   <a href="users.php" class="menu-link">
                     <div data-i18n="Connections">User Management</div>
@@ -128,12 +134,12 @@ if ($resultuserdata->num_rows > 0) {
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="extended-ui-perfect-scrollbar.php" class="menu-link">
+                  <a href="manage-files.php" class="menu-link">
                     <div data-i18n="Perfect Scrollbar">Leave Form</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="extended-ui-text-divider.php" class="menu-link">
+                  <a href="manage-tof.php" class="menu-link">
                     <div data-i18n="Text Divider">Travel Order Form</div>
                   </a>
                 </li>

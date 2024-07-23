@@ -664,6 +664,63 @@ function displayEmployeeFiles($conn)
 
 
 
+function displayTravelOrders($conn)
+{
+    $sql = "SELECT file_id, file_description, file_path, uploaded_at, f_status FROM travel_order";
+    $result = $conn->query($sql);
+?>
+    <div class="card">
+        <h5 class="card-header">Travel Orders List</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table" id="zero_config">
+                <thead>
+                    <tr>
+                        <th>File ID</th>
+                        <th>Description</th>
+                        <th>File </th>
+                        <th>Uploaded At</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <?php
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["file_id"] . "</td>";
+                            echo "<td>" . $row["file_description"] . "</td>";
+                            echo "<td> " .'<iframe src="'.$row["file_path"].'" frameborder="0" style="width: 400px; height: 500px;"></iframe>' . "</td>";
+                            echo "<td>" . $row["uploaded_at"] . "</td>";
+                            echo "<td>" . $row["f_status"] . "</td>";
+                            echo "<td><a class='btn btn-success m-1' href='" . $row["file_path"] . "' download>Download File</a><br><a class='btn btn-primary m-1' href='manage-tof.php?file_id=" . $row["file_id"] . "'>Edit File</a></td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='6'>No results found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+                <tfoot class="table-border-bottom-0">
+                    <tr>
+                        <th>File ID</th>
+                        <th>Description</th>
+                        <th>File Path</th>
+                        <th>Uploaded At</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+<?php
+}
+
+
+
 
 
 
