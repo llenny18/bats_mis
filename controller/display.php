@@ -5,7 +5,7 @@
 
 function displayDailyLogs($conn)
 {
-    $sql = "SELECT * FROM employeedetails inner join attendance on attendance.user_id = employeedetails.employee_id";
+    $sql = "SELECT * FROM employeedetails inner join attendance on attendance.user_id = employeedetails.employee_id group by employee_id";
     $result = $conn->query($sql);
 
 

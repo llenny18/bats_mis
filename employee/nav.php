@@ -180,6 +180,12 @@ if ($resultuserdata->num_rows > 0) {
                         <span class="align-middle">My Files</span>
                       </a>
                     </li>
+                    <li>
+                      <a class="dropdown-item" target="_blank" href="dtrtable.php?e_id=<?= $_SESSION['employee_id']?>">
+                        <i class="bx bx-list-ul me-2"></i>
+                        <span class="align-middle">My Logs</span>
+                      </a>
+                    </li>
                   
                     <li>
                       <div class="dropdown-divider"></div>
