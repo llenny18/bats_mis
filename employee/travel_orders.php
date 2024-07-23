@@ -1,4 +1,4 @@
-<?php include("../model/conn.php"); ?>
+<?php include("../model/conne.php"); ?>
 
 <!DOCTYPE html>
 
@@ -70,13 +70,14 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Travel Orders /</span> List <a href="manage-tof.php" class="btn btn-primary">+ Add Travel Orders</a></h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Travel Orders /</span> List </h4>
 
               
 
               <!-- Bootstrap Table with Header - Footer -->
               <?php
-              displayTravelOrders($conn);
+              displayTravelOrders($conn, $_SESSION['employee_id']);
+              ;
               ?>
               <!-- Bootstrap Table with Header - Footer -->
 

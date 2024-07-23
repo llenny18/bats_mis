@@ -520,9 +520,9 @@ function displayEmployeesAbsent($conn)
 
 
 
-function displayLeaveManagement($conn)
+function displayLeaveManagement($conn, $eid)
 {
-    $sql = "SELECT * FROM leavemanagement inner join employeedetails on employeedetails.employee_id =leavemanagement.user_id";
+    $sql = "SELECT * FROM leavemanagement inner join employeedetails on employeedetails.employee_id =leavemanagement.user_id where user_id=$eid";
     $result = $conn->query($sql);
 ?>
     <div class="card">
@@ -534,11 +534,12 @@ function displayLeaveManagement($conn)
                         <th>Name</th>
                         <th>User Type</th>
                         <th>More Info</th>
+                        <th>File</th>
                         <th>Leave Type</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Status</th>
-                        <th>Action</th>
+                       
                     </tr>
                 </thead>
                 <tbody>
@@ -550,24 +551,18 @@ function displayLeaveManagement($conn)
                             echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>";
                             echo "<td>" . $row["user_type"] . "</td>";
                             echo "<td>" . $row["more_info"] . "</td>";
+                            echo "<td>"; ?>
+
+                            <iframe src="data:application/pdf;base64,<?php echo base64_encode($row['file_data']); ?>"
+                                type="application/pdf" height="500px"></iframe>
+
+                            <?php echo "</td>";
                             echo "<td>" . $row["leave_type"] . "</td>";
                             echo "<td>" . $row["start_date"] . "</td>";
                             echo "<td>" . $row["end_date"] . "</td>";
                             viewLeaveStatus($conn, $row["leave_id"]);
 
-                            echo "<td>";
-                    ?>
-                            <div class="dropdown text-center">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item btn btn-success mb-1" href="../controller/manage-leaves.php?leave_id=<?= $row["user_id"] ?>&purpose=approve"><i class="bx bxs-check-circle me-2"></i> Approve</a>
-                                    <a class="dropdown-item btn btn-danger mb-1" href="../controller/manage-leaves.php?leave_id=<?= $row["user_id"] ?>&purpose=decline"><i class="bx bxs-x-circle me-2"></i> Decline</a>
-                                </div>
-                            </div>
-                    <?php
-                            echo "</td>";
+                            
                             echo "</tr>";
                         }
                     } else {
@@ -584,7 +579,7 @@ function displayLeaveManagement($conn)
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Status</th>
-                        <th>Action</th>
+                     
                     </tr>
                 </tfoot>
             </table>
@@ -1276,9 +1271,28 @@ function displayCalendarData($conn) {
 }
 
 
-function displayTravelOrders($conn)
+function displayTravelOrders($conn, $eid)
 {
-    $sql = "SELECT file_id, file_description, file_path, uploaded_at, f_status FROM travel_order";
+    $sql = "SELECT file_id, file_description, file_path, uploaded_at, f_status FROM travel_order inner join tof_employees on tof_employees.tof_id = travel_order.file_id where e_id1  = $eid 
+   OR e_id2  = $eid 
+   OR e_id3  = $eid 
+   OR e_id4  = $eid 
+   OR e_id5  = $eid 
+   OR e_id6  = $eid 
+   OR e_id7  = $eid 
+   OR e_id8  = $eid 
+   OR e_id9  = $eid 
+   OR e_id10  = $eid 
+   OR e_id11  = $eid 
+   OR e_id12  = $eid 
+   OR e_id13  = $eid 
+   OR e_id14  = $eid 
+   OR e_id15  = $eid 
+   OR e_id16  = $eid 
+   OR e_id17  = $eid 
+   OR e_id18  = $eid 
+   OR e_id19  = $eid 
+   OR e_id20  = $eid;";
     $result = $conn->query($sql);
 ?>
     <div class="card">
