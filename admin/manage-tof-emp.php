@@ -1,4 +1,4 @@
-<?php include ("../model/conne.php"); ?>
+<?php include ("../model/conn.php"); ?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
@@ -22,57 +22,101 @@
 
 <body>
   <?php
+
   if (isset($_GET['tofe_id'])) {
     $tofe_id = $_GET['tofe_id'];
-    $stmt = $conn->prepare("SELECT * FROM tof_employees WHERE tofe_id = ?");
+    $stmt = $conn->prepare("SELECT * FROM tof_employees WHERE tof_id = ?");
     $stmt->bind_param("i", $tofe_id);
     $stmt->execute();
     $resultfileinfo = $stmt->get_result();
 
     if ($resultfileinfo->num_rows > 0) {
-      $fileDataInfo = $resultfileinfo->fetch_assoc();
+        $fileDataInfo = $resultfileinfo->fetch_assoc();
     }
 
     if (isset($_POST['Update'])) {
-      $tof_id = $_POST['tof_id'];
-      $e_id = $_POST['e_id'];
+        $tof_id = $_POST['tof_id'];
+        $e_id1 = $_POST['e_id1'];
+      $e_id2 = $_POST['e_id2'];
+      $e_id3 = $_POST['e_id3'];
+      $e_id4 = $_POST['e_id4'];
+      $e_id5 = $_POST['e_id5'];
+      $e_id6 = $_POST['e_id6'];
+      $e_id7 = $_POST['e_id7'];
+      $e_id8 = $_POST['e_id8'];
+      $e_id9 = $_POST['e_id9'];
+      $e_id10 = $_POST['e_id10'];
+      $e_id11 = $_POST['e_id11'];
+      $e_id12 = $_POST['e_id12'];
+      $e_id13 = $_POST['e_id13'];
+      $e_id14 = $_POST['e_id14'];
+      $e_id15 = $_POST['e_id15'];
+      $e_id16 = $_POST['e_id16'];
+      $e_id17 = $_POST['e_id17'];
+      $e_id18 = $_POST['e_id18'];
+      $e_id19 = $_POST['e_id19'];
+      $e_id20 = $_POST['e_id20'];
 
-      $stmt = $conn->prepare("UPDATE tof_employees SET tof_id=?, e_id=? WHERE tofe_id=?");
-      $stmt->bind_param("iii", $tof_id, $e_id, $tofe_id);
+        $stmt = $conn->prepare("UPDATE tof_employees SET tof_id=?, e_id1=?, e_id2=?, e_id3=?, e_id4=?, e_id5=?, e_id6=?, e_id7=?, e_id8=?, e_id9=?, e_id10=?, e_id11=?, e_id12=?, e_id13=?, e_id14=?, e_id15=?, e_id16=?, e_id17=?, e_id18=?, e_id19=?, e_id20=? WHERE tof_id=?");
+        $stmt->bind_param("iiiiiiiiiiiiiiiiiiiiii", $tof_id, $e_id1,  $e_id2,  $e_id3,  $e_id4,  $e_id5,  $e_id6,  $e_id17,  $e_id8,  $e_id9,  $e_id10,  $e_id11,  $e_id12,  $e_id13,  $e_id14,  $e_id15,  $e_id16,  $e_id17,  $e_id18,  $e_id19,  $e_id20, $tofe_id);
 
-      if ($stmt->execute()) {
-        echo "<script>
-                alert('Edit Employee Information Successful!');
-                window.location.href = 'manage-employees.php?tofe_id=$tofe_id';
-              </script>";
-      } else {
-        echo "<script>
-                alert('Edit Employee Information Error: $tofe_id');
-                window.location.href = 'manage-employees.php?tofe_id=$tofe_id';
-              </script>";
-      }
+        if ($stmt->execute()) {
+            echo "<script>
+                    alert('Employee List Information Successful!');
+                    window.location.href = 'travel_orders.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Employee Information Error: $tofe_id');
+                    window.location.href = 'travel_orders.php';
+                  </script>";
+        }
     }
-  } else {
+} else {
+
+
+
+
     if (isset($_POST['Register'])) {
-      $tof_id = $_POST['tof_id'];
-      $e_id = $_POST['e_id'];
+        $tof_id = $_POST['tof_id'];
+        $e_id1 = $_POST['e_id1'];
+      $e_id2 = $_POST['e_id2'];
+      $e_id3 = $_POST['e_id3'];
+      $e_id4 = $_POST['e_id4'];
+      $e_id5 = $_POST['e_id5'];
+      $e_id6 = $_POST['e_id6'];
+      $e_id7 = $_POST['e_id7'];
+      $e_id8 = $_POST['e_id8'];
+      $e_id9 = $_POST['e_id9'];
+      $e_id10 = $_POST['e_id10'];
+      $e_id11 = $_POST['e_id11'];
+      $e_id12 = $_POST['e_id12'];
+      $e_id13 = $_POST['e_id13'];
+      $e_id14 = $_POST['e_id14'];
+      $e_id15 = $_POST['e_id15'];
+      $e_id16 = $_POST['e_id16'];
+      $e_id17 = $_POST['e_id17'];
+      $e_id18 = $_POST['e_id18'];
+      $e_id19 = $_POST['e_id19'];
+      $e_id20 = $_POST['e_id20'];
 
-      $stmt = $conn->prepare("INSERT INTO tof_employees (tof_id, e_id) VALUES (?, ?)");
-      $stmt->bind_param("ii", $tof_id, $e_id);
+        $stmt = $conn->prepare("INSERT INTO tof_employees (tof_id, e_id1, e_id2, e_id3, e_id4, e_id5, e_id6, e_id7, e_id8, e_id9, e_id10, e_id11, e_id12, e_id13, e_id14, e_id15, e_id16, e_id17, e_id18, e_id19, e_id20) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("iiiiiiiiiiiiiiiiiiiii", $tof_id, $e_id1,  $e_id2,  $e_id3,  $e_id4,  $e_id5,  $e_id6,  $e_id17,  $e_id8,  $e_id9,  $e_id10,  $e_id11,  $e_id12,  $e_id13,  $e_id14,  $e_id15,  $e_id16,  $e_id17,  $e_id18,  $e_id19,  $e_id20,);
 
-      if ($stmt->execute()) {
-        echo "<script>
-                alert('Insert Employee Information Successful!');
-                window.location.href = window.location.href;
-              </script>";
-      } else {
-        echo "<script>
-                alert('Insert Employee Information Error');
-                window.location.href = 'manage-employees.php';
-              </script>";
-      }
+        if ($stmt->execute()) {
+            echo "<script>
+                    alert('Insert Employee Information Successful!');
+                    window.location.href = window.location.href;
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Insert Employee Information Error');
+                    window.location.href = 'travel_orders.php';
+                  </script>";
+        }
     }
-  }
+}
+
   ?>
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
@@ -97,18 +141,40 @@
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-tof-id">TOF ID</label>
                       <div class="col-sm-10">
-                        <input type="text" required name="tof_id" class="form-control" id="basic-default-tof-id" value="<?php echo $fileDataInfo['tof_id'] ?? ''; ?>" placeholder="TOF ID" />
+                        <input type="text" required name="tof_id" class="form-control" id="basic-default-tof-id" value="<?php echo $fileDataInfo['tof_id'] ?? ''; ?>" placeholder="TOF ID" readonly/>
                       </div>
                     </div>
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-e-id">Employee ID</label>
+                   
+                    <?php
+                  
+                    for($i =1; $i<=20;$i++){
+                      
+
+                      ?>
+                      <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-e-id">Employee <?= $i ?></label>
                       <div class="col-sm-10">
-                        <input type="text" required name="e_id" class="form-control" id="basic-default-e-id" value="<?php echo $fileDataInfo['e_id'] ?? ''; ?>" placeholder="Employee ID" />
+                        <select name="e_id<?=$i?>" id="e_id" class="form-control">
+                        <option value="0">--Select Employee--</option>
+                      
+                        <?php 
+                        $useridemp = $fileDataInfo['e_id'.$i] ?? 0;
+                        
+                        displayEmployeesSelectBoxChoice($conn, $useridemp) ?>
+                        </select>
+                       
                       </div>
                     </div>
+                      <?php
+
+                      }
+                    ?>  
+
+
+
                     <div class="row justify-content-end">
                       <div class="col-sm-10">
-                        <button type="submit" name="<?php echo isset($_GET['tofe_id']) ? "Update" : "Register"; ?>" class="btn btn-primary"><?php echo isset($_GET['tofe_id']) ? "Update" : "Register"; ?> Employee</button>
+                        <button type="submit" name="<?php echo isset($_GET['tofe_id']) ? "Update" : "Register"; ?>" class="btn btn-primary"><?php echo isset($_GET['tofe_id']) ? "Update" : "Register"; ?> Employee List for Travel Order</button>
                       </div>
                     </div>
                   </form>

@@ -1,15 +1,13 @@
-<?php include ("../model/conne.php"); ?>
+<?php include("../model/conne.php"); ?>
 <!DOCTYPE html>
 
 
 
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
-  data-template="vertical-menu-template-free">
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
   <title>BATS MIS | Manage Travel Orders</title>
 
@@ -21,9 +19,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
   <!-- Icons. Uncomment required icon fonts -->
   <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
@@ -63,8 +59,9 @@
 
     if (isset($_POST['Update'])) {
       if (isset($_FILES['file_path'])) {
+        $rand = rand(9999,999999);
         $file = $_FILES['file_path'];
-        $filePath = '../files/travel_orders/' . basename($file['name']);
+        $filePath = '../files/travel_orders/file_'.$rand.'_' . basename($file['name']);
         move_uploaded_file($file['tmp_name'], $filePath);
 
         $file_description = $_POST['file_description'];
@@ -74,14 +71,22 @@
         $stmt->bind_param("sssi", $file_description, $filePath, $f_status, $file_id);
 
         if ($stmt->execute()) {
-          echo "<script>
-                  alert('Edit File Information Successful!');
-                  window.location.href = 'manage-files.php?file_id=$file_id';
-                </script>";
+
+          $sql = "SELECT * FROM `travel_order` ORDER BY uploaded_at DESC LIMIT 1";
+          $result = $conn->query($sql);
+
+
+          // output data of each row
+          while ($row = $result->fetch_assoc()) {
+            echo "<script>
+    alert('Edit of File Information Successful!');
+    window.location.href = 'manage-tof-emp.php?tofe_id=" . $row['file_id'] . ";
+  </script>";
+          }
         } else {
           echo "<script>
                   alert('Edit File Information Error: $file_id');
-                  window.location.href = 'manage-files.php?file_id=$file_id';
+                  ;
                 </script>";
         }
       } else {
@@ -92,10 +97,19 @@
         $stmt->bind_param("ssi", $file_description, $f_status, $file_id);
 
         if ($stmt->execute()) {
-          echo "<script>
-                  alert('Edit File Information Successful!');
-                  window.location.href = 'manage-files.php?file_id=$file_id';
-                </script>";
+
+          $sql = "SELECT * FROM `travel_order` ORDER BY uploaded_at DESC LIMIT 1";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+            // output data of each row
+            while ($row = $result->fetch_assoc()) {
+              echo "<script>
+    alert('Update of File Information Successful!');
+    window.location.href = 'manage-tof-emp.php?tofe_id=" . $row['file_id'] . ";
+  </script>";
+            }
+          }
         } else {
           echo "<script>
                   alert('Edit File Information Error: $file_id');
@@ -107,7 +121,8 @@
   } else {
     if (isset($_POST['Register'])) {
       $file = $_FILES['file_path'];
-      $filePath = '../files/travel_orders/' . basename($file['name']);
+      $rand = rand(9999,999999);
+      $filePath = '../files/travel_orders/file_'.$rand.'_' . basename($file['name']);
       move_uploaded_file($file['tmp_name'], $filePath);
 
       $file_description = $_POST['file_description'];
@@ -117,10 +132,24 @@
       $stmt->bind_param("sss", $file_description, $filePath, $f_status);
 
       if ($stmt->execute()) {
-        echo "<script>
-                  alert('Insert File Information Successful!');
-                  window.location.href = window.location.href;
-                </script>";
+
+        $sql = "SELECT * FROM `travel_order` ORDER BY uploaded_at DESC LIMIT 1";
+        $result = $conn->query($sql);
+
+
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+
+          $sql = "INSERT INTO tof_employees (tof_id)
+          VALUES ('".$row['file_id']."')";
+          $conn->query($sql) === TRUE;
+
+
+          echo "<script>
+  alert('Insert of File Information Successful!');
+  window.location.href = 'manage-tof-emp.php?tofe_id=" . $row['file_id'] . "';
+</script>";
+        }
       } else {
         echo "<script>
                   alert('Insert File Information Error');
@@ -134,7 +163,7 @@
     <div class="layout-container">
       <!-- Menu -->
 
-      <?php include ("./nav.php"); ?>
+      <?php include("./nav.php"); ?>
 
       <!-- / Navbar -->
 
@@ -144,11 +173,10 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
           <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><?php if (isset($_GET['user_id'])) {
-            echo "Edit";
-          } else {
-            echo "Register";
-          }
-          ; ?> File/</span> Administrator</h4>
+                                                                            echo "Edit";
+                                                                          } else {
+                                                                            echo "Register";
+                                                                          }; ?> File/</span> Administrator</h4>
 
           <!-- Basic Layout & Basic with Icons -->
           <div class="row">
@@ -159,7 +187,7 @@
                   <h5 class="mb-0">Input Information</h5>
                 </div>
                 <div class="card-body">
-                <form method="post" enctype="multipart/form-data">
+                  <form method="post" enctype="multipart/form-data">
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-id">File ID</label>
                       <div class="col-sm-10">
@@ -177,7 +205,7 @@
                       <div class="col-sm-10">
                         <input type="file" name="file_path" class="form-control" accept=".pdf" id="basic-default-file-path" placeholder="File Path" />
                         <small>Travel Order File Form File: <a href="../files/TORF.docx" target="_blank" class="btn btn-primary m-1" download>Download</a></small>
-                        <?php if (isset($fileDataInfo['file_path'])): ?>
+                        <?php if (isset($fileDataInfo['file_path'])) : ?>
                           <small>Current file: <a href="<?php echo $fileDataInfo['file_path']; ?>" target="_blank" class="btn btn-primary m-1">Download</a></small>
                         <?php endif; ?>
                       </div>
@@ -207,7 +235,7 @@
         <!-- / Content -->
 
         <!-- Footer -->
-        <?php include ("./footer.php"); ?>
+        <?php include("./footer.php"); ?>
         <!-- / Footer -->
 
         <div class="content-backdrop fade"></div>
