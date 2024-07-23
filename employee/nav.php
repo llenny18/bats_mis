@@ -84,13 +84,13 @@ if ($resultuserdata->num_rows > 0) {
 
             <!-- Extended components -->
             <li class="menu-item">
-              <a href="manage-leaves.php" class="menu-link menu-toggle">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Extended UI">File a Leave</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="extended-ui-perfect-scrollbar.php" class="menu-link">
+                  <a href="manage-leaves.php" class="menu-link">
                     <div data-i18n="Perfect Scrollbar">Leave Form</div>
                   </a>
                 </li>
