@@ -22,7 +22,15 @@
   const totalRevenueChartEl = document.querySelector('#totalRevenueChart'),
     totalRevenueChartOptions = {
       series: [
-        <?php displayMonthlyAttendance($conn) ?>
+        {
+          name: 'Present',
+          data:  <?php displayMonthlyAttendance($conn) ?>
+        },
+        {
+          name: 'Absent',
+          data:  <?php displayMonthlyAttendance1($conn) ?>
+        },
+       
       ],
       chart: {
         height: 300,

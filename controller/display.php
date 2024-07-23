@@ -1281,7 +1281,7 @@ function displayLCdata($conn)
 
 function displayMonthlyAttendance($conn)
 {
-    $sql = "SELECT * FROM `lc_data`";
+    $sql = "SELECT * FROM `monthly_attendance`";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -1297,6 +1297,29 @@ function displayMonthlyAttendance($conn)
         $presents_json = json_encode($presents);
 
         echo  $presents_json;
+    
+    }
+}
+
+
+function displayMonthlyAttendance1($conn)
+{
+    $sql = "SELECT * FROM `monthly_attendance`";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $absents = [];
+        $presents = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $absents[] = -1*$row['absents'];
+            $presents[] = $row['present_count'];
+        }
+
+        $absents_json = json_encode($absents);
+        $presents_json = json_encode($presents);
+
+        echo  $absents_json;
     
     }
 }
