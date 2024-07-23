@@ -285,7 +285,7 @@
   const growthChartEl = document.querySelector('#growthChart'),
     growthChartOptions = {
       series: [<?php displayAveragePercentP($conn); ?>],
-      labels: ['Monthly Present Percentage'],
+      labels: ["Today's Present Percentage"],
       chart: {
         height: 240,
         type: 'radialBar'

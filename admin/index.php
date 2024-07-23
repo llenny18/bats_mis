@@ -175,7 +175,7 @@ console.log(<?php displayMonthlyAttendance($conn) ?>)
                       <div class="col-md-4">
                       
                         <div id="growthChart" class="mt-5"></div>
-                        <div class="text-center fw-semibold pt-3 mb-2"><?php  displayAveragePercent($conn) ?>% Monthly Absent Percentage</div>
+                        <div class="text-center fw-semibold pt-3 mb-2"><?php  displayAveragePercent($conn) ?>% Today's Absent Percentage</div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">

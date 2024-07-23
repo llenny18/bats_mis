@@ -18,8 +18,9 @@ function displayDailyLogs($conn)
                     <tr>
                         <th>Full Name</th>
                         <th>Employment Type</th>
-                        <th>Time In and Time Out</th>
+                        
                         <th>Date</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,8 +31,9 @@ function displayDailyLogs($conn)
                             echo "<tr>";
                             echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>";
                             echo "<td>" . $row["employment_type"] . "</td>";
-                            echo "<td>" . date("g:i a", strtotime($row["time_in"])) . " - " . date("g:i a", strtotime($row["time_out"])) . "</td>";
+                        
                             echo "<td>" . date("F j, Y", strtotime($row["date"])) . "</td>";
+                            echo "<td>" .'<a target="_blank" href="dtrtable.php?e_id='.$row["user_id"].'" class="btn btn-success">View Monthly Logs</a>'.  "</td>";
 
 
                             echo "</tr>";
@@ -45,9 +47,10 @@ function displayDailyLogs($conn)
                     <tr>
                         <th>Full Name</th>
                         <th>Employment Type</th>
-                        <th>Time In and Time Out</th>
+                      
                         <th>Date</th>
-                    </tr>
+                        <th>Action</th>
+                        </tr>
                 </tfoot>
             </table>
         </div>
