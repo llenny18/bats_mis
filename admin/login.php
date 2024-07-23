@@ -106,8 +106,15 @@
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
+              <div class="mb-4 text-center" style="font-size: 12px;" >
+                <button type="button"  style="font-size: 12px;" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#modalScrollable">
+                  View Terms and conditions
+                </button>
+                <br>
+                <input type="checkbox" name="option" value="option1" required> Accept Terms and Conditions
+              </div>
               <div class="mb-3">
-                <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                <button class="btn btn-success d-grid w-100" type="submit">SIGN IN</button>
               </div>
             </form>
 
@@ -121,6 +128,62 @@
   </div>
 
   <!-- / Content -->
+  <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalScrollableTitle">Administrator Terms and Conditions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>General Use</strong>
+                </p>
+                <p>
+                    1. <strong>Account Responsibility</strong>: Administrators are responsible for maintaining the confidentiality of their account information and for all activities that occur under their account.
+                </p>
+                <p>
+                    2. <strong>System Management</strong>: Administrators must manage system access, ensuring only authorized personnel have access to the system.
+                </p>
+                <p>
+                    3. <strong>Data Integrity</strong>: Administrators are responsible for ensuring the integrity and security of the data within the system.
+                </p>
+                <p>
+                    4. <strong>System Updates</strong>: Administrators must ensure that the system is regularly updated and maintained to prevent any security breaches.
+                </p>
+                <p>
+                    5. <strong>Compliance</strong>: Administrators must ensure that the system complies with all applicable laws, regulations, and company policies.
+                </p>
+                <p>
+                    <strong>Prohibited Activities</strong>
+                </p>
+                <p>
+                    1. <strong>Unauthorized Access</strong>: Administrators must not grant access to unauthorized personnel or access restricted areas without proper authorization.
+                </p>
+                <p>
+                    2. <strong>Data Misuse</strong>: Administrators must not misuse or mishandle employee data stored within the system.
+                </p>
+                <p>
+                    3. <strong>Negligence</strong>: Administrators must not neglect their responsibilities in managing the system, including regular updates, backups, and security checks.
+                </p>
+                <p>
+                    By using the Management Information System with Attendance Monitoring, administrators agree to adhere to the above terms and conditions. Violation of these terms may result in disciplinary action, up to and including termination of employment.
+                </p>
+                <p>
+                    <strong>Acknowledgment</strong>
+                </p>
+                <p>
+                    I have read and understood the terms and conditions outlined above and agree to abide by them.
+                </p>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+             
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

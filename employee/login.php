@@ -92,7 +92,7 @@
             ?>
 
             <!-- Your HTML form goes here -->
-            <form id="formAuthentication" class="mb-3"  method="POST">
+            <form id="formAuthentication" class="mb-3" method="POST">
               <div class="mb-3">
                 <label for="email" class="form-label">Email or Username</label>
                 <input type="text" class="form-control" id="email" name="email-username" placeholder="Enter your email or username" autofocus />
@@ -106,19 +106,14 @@
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
-              <div class="mb-4">
-              <button
-                          type="button"
-                          class="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalScrollable"
-                          
-                        >
-                          View T&C 
-                        </button>
-                        <input type="checkbox" name="option" value="option1" required> Accept Terms and Conditions
-                        </div>
-                        
+              <div class="mb-4 text-center" style="font-size: 12px;" >
+                <button type="button"  style="font-size: 12px;" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#modalScrollable">
+                  View Terms and conditions
+                </button>
+                <br>
+                <input type="checkbox" name="option" value="option1" required> Accept Terms and Conditions
+              </div>
+
               <div class="mb-3">
 
                 <button class="btn btn-success d-grid w-100" type="submit">SIGN IN</button>
@@ -133,67 +128,67 @@
       </div>
     </div>
   </div>
- 
+
   <!-- / Content -->
   <div class="modal fade" id="modalScrollable" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalScrollableTitle">Employee Terms and Conditions</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    <strong>General Use</strong>
-                </p>
-                <p>
-                    1. <strong>Account Responsibility</strong>: Employees are responsible for maintaining the confidentiality of their account information and for all activities that occur under their account.
-                </p>
-                <p>
-                    2. <strong>System Access</strong>: Access to the system is restricted to authorized personnel only. Unauthorized access or use is prohibited.
-                </p>
-                <p>
-                    3. <strong>Data Accuracy</strong>: Employees must ensure the accuracy of the information they provide in the system, including personal data and attendance records.
-                </p>
-                <p>
-                    4. <strong>Attendance Monitoring</strong>: Employees agree to the use of image processing technology for attendance monitoring purposes.
-                </p>
-                <p>
-                    5. <strong>Compliance</strong>: Employees must comply with all company policies and procedures when using the system.
-                </p>
-                <p>
-                    6. <strong>Privacy</strong>: The company respects employee privacy and will handle personal data in accordance with applicable privacy laws and regulations.
-                </p>
-                <p>
-                    <strong>Prohibited Activities</strong>
-                </p>
-                <p>
-                    1. <strong>Unauthorized Access</strong>: Attempting to access restricted areas of the system without proper authorization is prohibited.
-                </p>
-                <p>
-                    2. <strong>Data Tampering</strong>: Employees must not alter or falsify any information within the system.
-                </p>
-                <p>
-                    3. <strong>Misuse of Resources</strong>: Employees are prohibited from using the system for any illegal activities or activities not related to their job responsibilities.
-                </p>
-                <p>
-                    By using the Management Information System with Attendance Monitoring, employees agree to adhere to the above terms and conditions. Violation of these terms may result in disciplinary action, up to and including termination of employment.
-                </p>
-                <p>
-                    <strong>Acknowledgment</strong>
-                </p>
-                <p>
-                    I have read and understood the terms and conditions outlined above and agree to abide by them.
-                </p>
-             
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-            
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalScrollableTitle">Employee Terms and Conditions</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <p>
+            <strong>General Use</strong>
+          </p>
+          <p>
+            1. <strong>Account Responsibility</strong>: Employees are responsible for maintaining the confidentiality of their account information and for all activities that occur under their account.
+          </p>
+          <p>
+            2. <strong>System Access</strong>: Access to the system is restricted to authorized personnel only. Unauthorized access or use is prohibited.
+          </p>
+          <p>
+            3. <strong>Data Accuracy</strong>: Employees must ensure the accuracy of the information they provide in the system, including personal data and attendance records.
+          </p>
+          <p>
+            4. <strong>Attendance Monitoring</strong>: Employees agree to the use of image processing technology for attendance monitoring purposes.
+          </p>
+          <p>
+            5. <strong>Compliance</strong>: Employees must comply with all company policies and procedures when using the system.
+          </p>
+          <p>
+            6. <strong>Privacy</strong>: The company respects employee privacy and will handle personal data in accordance with applicable privacy laws and regulations.
+          </p>
+          <p>
+            <strong>Prohibited Activities</strong>
+          </p>
+          <p>
+            1. <strong>Unauthorized Access</strong>: Attempting to access restricted areas of the system without proper authorization is prohibited.
+          </p>
+          <p>
+            2. <strong>Data Tampering</strong>: Employees must not alter or falsify any information within the system.
+          </p>
+          <p>
+            3. <strong>Misuse of Resources</strong>: Employees are prohibited from using the system for any illegal activities or activities not related to their job responsibilities.
+          </p>
+          <p>
+            By using the Management Information System with Attendance Monitoring, employees agree to adhere to the above terms and conditions. Violation of these terms may result in disciplinary action, up to and including termination of employment.
+          </p>
+          <p>
+            <strong>Acknowledgment</strong>
+          </p>
+          <p>
+            I have read and understood the terms and conditions outlined above and agree to abide by them.
+          </p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
 
   <!-- Core JS -->
