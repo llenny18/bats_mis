@@ -1,6 +1,6 @@
 * To do:
 
-    * Only Facial recognition left 
+    * Only Facial recognition left z
 
 
 
