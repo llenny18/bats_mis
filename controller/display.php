@@ -343,10 +343,26 @@ function displayEmployees($conn)
 
 
 
+
+function displayEmployeeFaces($conn)
+{
+    $sql = "SELECT * from employeedetails where e_status = 'Active' ";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // Output data of each row
+        while ($row = $result->fetch_assoc()) {
+    ?>
+    <img class="comparison-image" src="data:image/jpeg;base64, <?php echo base64_encode($row['user_icon']) ?>" alt="<?= $row['employee_id'] ?>" style="display: none;" />
+    <?php
+        }
+    }
+}
+
 function displayEmployeesOnLeave($conn)
 {
     $sql = "SELECT employee_id, user_name, first_name, last_name, employment_type, date_of_birth, email, phone_number FROM employeedetails inner join attendance on attendance.user_id = employeedetails.employee_id where attendance.status = 'on_leave' and e_status = 'Active' and attendance.date  = curdate()";
     $result = $conn->query($sql);
+    
     ?>
     <div class="card">
         <h5 class="card-header">Employee List and Information</h5>
