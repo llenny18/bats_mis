@@ -1,9 +1,5 @@
-<!-- /*
-* Template Name: Learner
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
+<?php include("../model/conn.php"); ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,7 +25,27 @@
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="css/aos.css">
   <link rel="stylesheet" href="css/style.css">
-
+  <script defer src="../face-api/face-api.js/dist/face-api.js"></script>
+  <script defer src="../face-api/face-api.js/compareFaces.js"></script>
+  <style>
+    .container {
+      position: relative;
+      width: 720px;
+      height: 560px;
+    }
+    #video {
+      width: 100%;
+      height: 100%;
+    }
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
   <title>Batangas MIS</title>
 </head>
 
@@ -51,16 +67,7 @@
     <div class="sticky-nav js-sticky-header">
       <div class="container position-relative">
         <div class="site-navigation text-center">
-          <a href="index.php" class="logo menu-absolute m-0">BATANGAS MIS<span class="text-primary">.</span></a>
-
-          <ul class="js-clone-nav d-none d-lg-inline-block site-menu">
-            <li ><a href="../admin/">View Admin Dashboard</a></li>
-            
-            <li><a href="face-recog.php">Open Face Login</a></li>
-            <li><a href="../employee/">Login as Employee</a></li>
-          </ul>
-
-          <a href="../admin/" class="btn-book btn btn-secondary btn-sm menu-absolute" >Login as Administrator</a>
+          <a href="index.php" class="logo menu-absolute m-0">BATANGAS MIS: EMPLOYEE FACIAL RECOGNITION LOGIN<span class="text-primary">.</span></a>
 
           
 
@@ -78,15 +85,18 @@
 
         <div class="col-12">
 
-          <div class="row justify-content-center ">
+          <div class="row justify-content-center" style="margin-top: 100px;">
 
-            <div class="col-lg-6 text-center ">
-              <a  href="https://www.batangas.gov.ph/portal/" target="_blank" class="caption mb-4 d-inline-block">View Batangas Province's Official Website</a>
-
-              <h1 class="mb-4 heading text-white" data-aos="fade-up" data-aos-delay="100">WELCOME TO BATANGAS PROVINCE MANAGEMENT INFORMATION SYSTEM</h1>
-              <p class="mb-0" data-aos="fade-up" data-aos-delay="300"><a href="../admin/" class="btn btn-secondary">Enter the Administrator System</a></p>
-
-            </div>
+          <div class="container">
+    <video id="video" width="720" height="560" autoplay muted></video>
+    <canvas id="overlay"></canvas>
+  </div>
+  <div class="container">
+    <?php displayEmployeeFaces($conn)  ?>
+    
+    <!-- Add more images as needed -->
+    <div id="result"></div>
+  </div>
 
 
           </div>
