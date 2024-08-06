@@ -1,4 +1,4 @@
-<?php include("../model/conn.php"); ?>
+<?php include("../model/conne.php"); ?>
 
 <!DOCTYPE html>
 
@@ -76,7 +76,7 @@
 
               <!-- Bootstrap Table with Header - Footer -->
               <?php
-              displayEmployeeLeaveCredits($conn);
+              displayEmployeeLeaveCredits($conn, $_SESSION['employee_id']);
               ?>
               <!-- Bootstrap Table with Header - Footer -->
 

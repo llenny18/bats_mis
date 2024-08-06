@@ -70,11 +70,6 @@ if ($resultuserdata->num_rows > 0) {
                     <div data-i18n="Without navbar">Daily Time Record</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="leaves.php" class="menu-link">
-                    <div data-i18n="Container">Leave Credits </div>
-                  </a>
-                </li>
                 
                 <li class="menu-item">
                   <a href="travel_orders.php" class="menu-link">
@@ -134,6 +129,11 @@ if ($resultuserdata->num_rows > 0) {
               </a>
               <ul class="menu-sub">
                 
+              <li class="menu-item">
+                  <a href="leaves.php" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Leave Applications</div>
+                  </a>
+                </li>
               <li class="menu-item">
                   <a href="admin-lcredits.php" class="menu-link">
                     <div data-i18n="Perfect Scrollbar">Admin Leave Credits</div>

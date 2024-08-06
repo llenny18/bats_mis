@@ -670,9 +670,9 @@ function displayAdminLeaveCredits($conn) {
 }
 
 
-function displayEmployeeLeaveCredits($conn) {
+function displayEmployeeLeaveCredits($conn, $uid) {
     // Query for Employee Leave Credits by Month
-    $sql = "SELECT * FROM employee_leavecredits";
+    $sql = "SELECT * FROM employee_leavecredits where user_id = $uid";
     $result = $conn->query($sql);
     
     ?>
