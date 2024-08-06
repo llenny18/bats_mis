@@ -48,9 +48,9 @@
       $user_name = $_POST['user_name'];
       $user_password = $_POST['user_password'];
       $employment_type = $_POST['employment_type'];
-      $pds_file = $_POST['pds_file'];
-      $saln_file = $_POST['saln_file'];
-
+     
+      $position = $_POST['position'];
+      
       // Update query
       $sqlupdate = "UPDATE employeedetails SET 
         first_name='$first_name',
@@ -61,8 +61,8 @@
         user_name='$user_name',
         user_password='$user_password',
         employment_type='$employment_type',
-        pds_file='$pds_file',
-        saln_file='$saln_file'
+        position='$position'
+      
         WHERE employee_id='$employee_id'";
 
       if ($conn->query($sqlupdate) === TRUE) {
@@ -93,11 +93,11 @@
       $user_name = $_POST['user_name'];
       $user_password = $_POST['user_password'];
       $employment_type = $_POST['employment_type'];
-      $pds_file = $_POST['pds_file'];
-      $saln_file = $_POST['saln_file'];
+      $position = $_POST['position'];
+      
 
       // Insert query
-      $sqlinsert = "INSERT INTO employeedetails (employee_id, first_name, last_name, date_of_birth, email, phone_number, user_name, user_password, employment_type, pds_file, saln_file) VALUES (
+      $sqlinsert = "INSERT INTO employeedetails (employee_id, first_name, last_name, date_of_birth, email, phone_number, user_name, user_password, employment_type, position) VALUES (
         '$employee_id',
         '$first_name',
         '$last_name',
@@ -107,8 +107,7 @@
         '$user_name',
         '$user_password',
         '$employment_type',
-        '$pds_file',
-        '$saln_file')";
+        '$position')";
 
       if ($conn->query($sqlinsert) === TRUE) {
       ?>
@@ -189,6 +188,12 @@
                       </div>
                     </div>
                     <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label" for="basic-default-phone">Position</label>
+                      <div class="col-sm-10">
+                        <input type="text" id="basic-default-phone" class="form-control" placeholder="Position" name="position" aria-describedby="basic-default-phone" value="<?= $employeeDataInfo['position'] ?? '' ?>" />
+                      </div>
+                    </div>
+                    <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-username">Username</label>
                       <div class="col-sm-10">
                         <input type="text" id="basic-default-username" class="form-control" placeholder="Username" name="user_name" aria-describedby="basic-default-username2" value="<?= $employeeDataInfo['user_name'] ?? '' ?>" />
@@ -216,18 +221,7 @@
                         </select>
                       </div>
                     </div>
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-pdsfile">PDS File</label>
-                      <div class="col-sm-10">
-                        <input type="text" id="basic-default-pdsfile" class="form-control" placeholder="PDS File" name="pds_file" aria-describedby="basic-default-pdsfile" value="<?= $employeeDataInfo['pds_file'] ?? '' ?>" />
-                      </div>
-                    </div>
-                    <div class="row mb-3">
-                      <label class="col-sm-2 col-form-label" for="basic-default-salnfile">SALN File</label>
-                      <div class="col-sm-10">
-                        <input type="text" id="basic-default-salnfile" class="form-control" placeholder="SALN File" name="saln_file" aria-describedby="basic-default-salnfile" value="<?= $employeeDataInfo['saln_file'] ?? '' ?>" />
-                      </div>
-                    </div>
+                   
                     <div class="row justify-content-end">
                       <div class="col-sm-10">
                         <button type="submit" name="<?php if (isset($_GET['employee_id'])) {

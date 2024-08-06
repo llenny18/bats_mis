@@ -18,7 +18,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard | View User Files</title>
+    <title>Dashboard | Employee Leave Credits</title>
 
     <meta name="description" content="" />
 
@@ -51,29 +51,8 @@
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/handsontable@8.4.0/dist/handsontable.full.min.css">
-<script src="https://cdn.jsdelivr.net/npm/handsontable@8.4.0/dist/handsontable.full.min.js"></script>
-<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
-
-
+  
     <script src="../assets/js/config.js"></script>
-    <style>
-      #output{
-width: 400px;
-height: 300px;
-overflow-y: scroll;
-overflow-x: scroll;
-      }
-        #table_sheet{
-border: 2px solid black;
-
-      }
-
-      #table_sheet td{
-
-border: 2px solid black;
-      }
-    </style>
   </head>
 
   <body>
@@ -91,13 +70,13 @@ border: 2px solid black;
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin /</span> Files <a href="manage-files.php" class="btn btn-primary">+ Add my File</a></h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Employees /</span> Leave Credits</h4>
 
               
 
               <!-- Bootstrap Table with Header - Footer -->
               <?php
-              displayEmployeeFileSeparatedAdmin($conn, $_GET['user_id']);
+              displayEmployeeLeaveCredits($conn);
               ?>
               <!-- Bootstrap Table with Header - Footer -->
 

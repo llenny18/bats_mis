@@ -133,6 +133,18 @@ if ($resultuserdata->num_rows > 0) {
                 <div data-i18n="Extended UI">File a Leave</div>
               </a>
               <ul class="menu-sub">
+                
+              <li class="menu-item">
+                  <a href="admin-lcredits.php" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Admin Leave Credits</div>
+                  </a>
+                </li>
+                
+              <li class="menu-item">
+                  <a href="employee-lcredits.php" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Employee Leave Credits</div>
+                  </a>
+                </li>
                 <li class="menu-item">
                   <a href="manage-files.php" class="menu-link">
                     <div data-i18n="Perfect Scrollbar">Leave Form</div>

@@ -215,10 +215,13 @@
                       <label class="col-sm-2 col-form-label" for="basic-default-file-type">File Type</label>
                       <div class="col-sm-10">
                         <select name="file_type" id="file_type" class="form-control">
-                          <option <?php echo (isset($fileDataInfo['file_type']) && $fileDataInfo['file_type'] == 'pds') ? "selected" : ""; ?> value="pds">PDS</option>
-                          <option <?php echo (isset($fileDataInfo['file_type']) && $fileDataInfo['file_type'] == 'saln') ? "selected" : ""; ?> value="saln">SALN</option>
+                          
+                          <option <?php echo (isset($fileDataInfo['file_type']) && $fileDataInfo['file_type'] == 'pds') ? "selected" : ""; ?> value="pds">PDS (Excel file)</option>
+                          <option <?php echo (isset($fileDataInfo['file_type']) && $fileDataInfo['file_type'] == 'saln') ? "selected" : ""; ?> value="saln">SALN (PDF File)</option>
                           <option <?php echo (isset($fileDataInfo['file_type']) && $fileDataInfo['file_type'] == 'other') ? "selected" : ""; ?> value="other">Other</option>
                         </select>
+                        <a class='btn btn-primary m-1' href='../files/saln.doc'  download>Download SALN Format File</a>
+                        <a class='btn btn-primary m-1' href='../files/pds.xlsx'  download>Download PDS Format File</a>
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -230,7 +233,7 @@
                     <div class="row mb-3">
                       <label class="col-sm-2 col-form-label" for="basic-default-file-path">File Path</label>
                       <div class="col-sm-10">
-                        <input type="file" name="file_path" class="form-control" accept=".xls, .xlsx" id="basic-default-file-path" placeholder="File Path" />
+                        <input type="file" name="file_path" class="form-control" accept=".xls, .xlsx, .pdf"" id="basic-default-file-path" placeholder="File Path" />
                         <?php if (isset($fileDataInfo['file_path'])): ?>
                           <small>Current file: <a href="<?php echo $fileDataInfo['file_path']; ?>" target="_blank" class="btn btn-primary m-1">Download</a></small>
                         <?php endif; ?>

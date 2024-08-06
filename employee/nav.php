@@ -91,6 +91,17 @@ if ($resultuserdata->num_rows > 0) {
               <ul class="menu-sub">
                 
               <li class="menu-item">
+                  <a href="admin-lcredits.php" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Admin Leave Credits</div>
+                  </a>
+                </li>
+                
+              <li class="menu-item">
+                  <a href="employee-lcredits.php" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Employee Leave Credits</div>
+                  </a>
+                </li>
+              <li class="menu-item">
                   <a href="leaves.php" class="menu-link">
                     <div data-i18n="Perfect Scrollbar">Leave Status</div>
                   </a>
